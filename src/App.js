@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TopBar from './component/navbar/TopBar';
 import NavBar from './component/navbar/NavBar';
 import Banner from './component/Banner.js';
@@ -9,7 +9,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Brands from './component/brand/Brands';
 import Collaborate from './component/collaborate/Collaborate';
 import Footer from './component/footer/Footer';
+import MenuMobile from './component/MenuMobile';
+import Modal from './component/Modal';
 function App() {
+	// const [mobileMode, setMobileMode] = useState(false);
+	// const handleMobileMode = () => {};
 	return (
 		<Router>
 			<div id="site-wrapper">
@@ -22,6 +26,7 @@ function App() {
 				<Brands />
 				<Collaborate />
 				<Footer />
+				{/* <Modal /> */}
 			</div>
 		</Router>
 	);

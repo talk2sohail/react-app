@@ -18,9 +18,8 @@ function Banner() {
 		<section className="bannerWrapper">
 			<div className="bannerSingle">
 				{banner.map(item => (
-					<div className="bannerItem">
+					<div className="bannerItem" key={item.key}>
 						<ImageUtil
-							key={item.key}
 							src={`assets/images/banner/${item.img}`}
 							alt=""
 						/>

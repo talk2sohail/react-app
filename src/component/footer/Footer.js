@@ -4,10 +4,10 @@ import ImageUtil from '../util/ImageUtil';
 function Footer() {
 	return (
 		<footer>
-			<div class="sectionWrapper">
-				<div class="footerWrapper d-flex flex-wrap justify-content-center">
-					<div class="footerComponent about">
-						<a href="javascript:void(0)" class="logo">
+			<div className="sectionWrapper">
+				<div className="footerWrapper d-flex flex-wrap justify-content-center">
+					<div className="footerComponent about">
+						<a href="javascript:void(0)" className="logo">
 							<img
 								src="assets/images/logo.png"
 								width="100"
@@ -21,7 +21,7 @@ function Footer() {
 							soluta asperiores, modi
 						</p>
 					</div>
-					<div class="footerComponent">
+					<div className="footerComponent">
 						<h3>Company</h3>
 						<ul>
 							<li>
@@ -35,7 +35,7 @@ function Footer() {
 							</li>
 						</ul>
 					</div>
-					<div class="footerComponent">
+					<div className="footerComponent">
 						<h3>Help & Support</h3>
 						<ul>
 							<li>
@@ -49,7 +49,7 @@ function Footer() {
 							</li>
 						</ul>
 					</div>
-					<div class="footerComponent">
+					<div className="footerComponent">
 						<h3>Policies</h3>
 						<ul>
 							<li>
@@ -70,23 +70,23 @@ function Footer() {
 					</div>
 				</div>
 			</div>
-			<div class="absolutefooter">
-				<div class="sectionWrapper">
-					<div class="row">
-						<div class="col-12 col-lg-6">
-							<p class="mb-0">
+			<div className="absolutefooter">
+				<div className="sectionWrapper">
+					<div className="row">
+						<div className="col-12 col-lg-6">
+							<p className="mb-0">
 								Copyright © 2020 MDDS. All Rights Reserved.
 							</p>
 						</div>
-						<div class="col-12 col-lg-6">
-							<div class="socialIconsWrapper d-flex flex-wrap justify-content-end">
+						<div className="col-12 col-lg-6">
+							<div className="socialIconsWrapper d-flex flex-wrap justify-content-end">
 								{footerData.map(item => (
 									<a
 										href="javascript:void(0)"
-										class="d-block socialIcons"
+										className="d-block socialIcons"
+										key={item.key}
 									>
 										<ImageUtil
-											key={item.key}
 											src={`assets/images/icons/${item.img}`}
 											width="16"
 										/>

@@ -4,26 +4,25 @@ import ImageUtil from '../../component/util/ImageUtil';
 function Brands() {
 	const [brands, setBrands] = useState(brandsData);
 	return (
-		<section class="brandsWrapper">
-			<div class="sectionWrapper">
-				<div class="row align-items-center justify-content-between">
-					<div class="col-12">
-						<div class="title">
-							<h2 class="text-center">Brands</h2>
-							<p class="m-auto text-center">
+		<section className="brandsWrapper">
+			<div className="sectionWrapper">
+				<div className="row align-items-center justify-content-between">
+					<div className="col-12">
+						<div className="title">
+							<h2 className="text-center">Brands</h2>
+							<p className="m-auto text-center">
 								Lorem ipsum dolor sit amet consectetur
 								adipisicing elit. Eligendi placeat eos enim
 								quibusdam illo dignissimos vel
 							</p>
 						</div>
 					</div>
-					<div class="col-12">
-						<div class="brandsList">
+					<div className="col-12">
+						<div className="brandsList">
 							<ul>
 								{brands.map(item => (
-									<li>
+									<li key={item.key}>
 										<ImageUtil
-											key={item.key}
 											src={`assets/images/brandLogos/${item.img}`}
 											alt={item.brandName}
 										/>
@@ -32,7 +31,7 @@ function Brands() {
 							</ul>
 							<a
 								href="javascript:void(0)"
-								class="theme-btn theme-btn-green text-uppercase"
+								className="theme-btn theme-btn-green text-uppercase"
 							>
 								brands we repair
 							</a>

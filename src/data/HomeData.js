@@ -1,3 +1,10 @@
+exports.menuName = [
+	{ key: 1, menu: 'About', page: 'about' },
+	{ key: 2, menu: 'Repair', page: 'repair' },
+	{ key: 3, menu: 'Brands', page: 'brands' },
+	{ key: 4, menu: 'New Offers', page: 'newOffer' },
+	{ key: 5, menu: 'Our Stories', page: 'ourStories' },
+];
 exports.data = [
 	{
 		key: 1,
@@ -103,20 +110,20 @@ exports.repairData = [
 ];
 
 exports.brandsData = [
-	{ key: 1, img: 'apple.png', brandName: 'Apple' },
-	{ key: 2, img: 'samsung.png', brandName: 'Samsung' },
-	{ key: 3, img: 'oneplus.png', brandName: 'One Plus' },
-	{ key: 4, img: 'oppo.png', brandName: 'Oppo' },
-	{ key: 5, img: 'vivo.png', brandName: 'Vivo' },
-	{ key: 6, img: 'realme.png', brandName: 'Realme' },
-	{ key: 7, img: 'mi.png', brandName: 'Xiaome' },
+	{ key: 11, img: 'apple.png', brandName: 'Apple' },
+	{ key: 12, img: 'samsung.png', brandName: 'Samsung' },
+	{ key: 13, img: 'oneplus.png', brandName: 'One Plus' },
+	{ key: 14, img: 'oppo.png', brandName: 'Oppo' },
+	{ key: 15, img: 'vivo.png', brandName: 'Vivo' },
+	{ key: 16, img: 'realme.png', brandName: 'Realme' },
+	{ key: 17, img: 'mi.png', brandName: 'Xiaome' },
 ];
 
 exports.bannerData = [
-	{ key: 1, img: 'bannerOne.jpg' },
-	{ key: 2, img: 'bannerTwo.jpg' },
-	{ key: 3, img: 'bannerOne.jpg' },
-	{ key: 4, img: 'bannerTwo.jpg' },
+	{ key: 21, img: 'bannerOne.jpg' },
+	{ key: 22, img: 'bannerTwo.jpg' },
+	{ key: 23, img: 'bannerOne.jpg' },
+	{ key: 24, img: 'bannerTwo.jpg' },
 ];
 
 exports.footerData = [
