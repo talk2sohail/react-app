@@ -1,32 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Home from './component/Home';
 import TopBar from './component/navbar/TopBar';
 import NavBar from './component/navbar/NavBar';
-import Banner from './component/Banner.js';
-import Help from './component/help/Help';
-import Procedure from './component/procedure/Procedures';
-import Service from './component/service/Services';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Brands from './component/brand/Brands';
-import Collaborate from './component/collaborate/Collaborate';
 import Footer from './component/footer/Footer';
-import MenuMobile from './component/MenuMobile';
-import Modal from './component/Modal';
+import About from './component/about/About';
+import Repair from './component/Repair/Repair';
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Faq from './component/FAQ/Faq';
 function App() {
-	// const [mobileMode, setMobileMode] = useState(false);
-	// const handleMobileMode = () => {};
 	return (
 		<Router>
 			<div id="site-wrapper">
 				<TopBar />
 				<NavBar />
-				<Banner />
-				<Help />
-				<Procedure />
-				<Service />
-				<Brands />
-				<Collaborate />
+				<Switch>
+					<Route path="/" component={Home} exact />
+					<Route path="/faq" component={Faq} exact />
+					<Route path="/about" component={About} exact />
+					<Route path="/repair" component={Repair} exact />
+				</Switch>
 				<Footer />
-				{/* <Modal /> */}
 			</div>
 		</Router>
 	);

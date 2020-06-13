@@ -1,19 +1,20 @@
 import React from 'react';
 import { footerData } from '../../data/HomeData';
 import ImageUtil from '../util/ImageUtil';
+import { Link } from 'react-router-dom';
 function Footer() {
 	return (
 		<footer>
 			<div className="sectionWrapper">
 				<div className="footerWrapper d-flex flex-wrap justify-content-center">
 					<div className="footerComponent about">
-						<a href="javascript:void(0)" className="logo">
+						<Link to="/" className="logo">
 							<img
 								src="assets/images/logo.png"
 								width="100"
 								alt=""
 							/>
-						</a>
+						</Link>
 						<p>
 							Lorem ipsum dolor sit, amet consectetur adipisicing
 							elit. Dolorum voluptatem soluta asperiores, modi
@@ -25,7 +26,7 @@ function Footer() {
 						<h3>Company</h3>
 						<ul>
 							<li>
-								<a href="about.html">About Us</a>
+								<Link to="/about">About Us</Link>
 							</li>
 							<li>
 								<a href="javascript:void(0)">Blog</a>
@@ -42,7 +43,7 @@ function Footer() {
 								<a href="javascript:void(0)">Feedback</a>
 							</li>
 							<li>
-								<a href="faq.html">FAQ</a>
+								<Link to="/faq">FAQ</Link>
 							</li>
 							<li>
 								<a href="javascript:void(0)">Sitemap</a>

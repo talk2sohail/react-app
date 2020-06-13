@@ -6,16 +6,16 @@ import { menuName } from '../../data/HomeData';
 import MenuMobile from '../MenuMobile';
 function NavBar() {
 	const [menu, setMenu] = useState(menuName);
-	const [hanBurger, sethanBurger] = useState(false);
+	const [hamBurger, sethamBurger] = useState(false);
 	const handleMobile = () => {
-		if (!hanBurger) {
+		if (!hamBurger) {
 			window.$('.mobileMenuWrapperOuter').addClass('on');
 			window.$('body').addClass('mobileMenuActive');
-			sethanBurger(!hanBurger);
+			sethamBurger(!hamBurger);
 		} else {
 			window.$('.mobileMenuWrapperOuter').removeClass('on');
 			window.$('body').removeClass('mobileMenuActive');
-			sethanBurger(!hanBurger);
+			sethamBurger(!hamBurger);
 		}
 	};
 	return (
@@ -24,8 +24,8 @@ function NavBar() {
 				<div className="sectionWrapper">
 					<div className="row align-items-center justify-content-between no-gutters">
 						<div className="col-4 d-block d-lg-none">
-							<Link
-								to="javascript:void(0)"
+							<a
+								href="javascript:void(0)"
 								className="mobileMenuTrigger"
 								onClick={handleMobile}
 							>
@@ -34,12 +34,12 @@ function NavBar() {
 									<span className="icon-bar middle-bar"></span>
 									<span className="icon-bar bottom-bar m-0"></span>
 								</button>
-							</Link>
+							</a>
 						</div>
 
 						<div className="col-4 col-lg-2">
 							<div className="logoWrapper">
-								<Link to="index.html">
+								<Link to="/">
 									<img
 										src="assets/images/logo.png"
 										width="120"
@@ -56,7 +56,7 @@ function NavBar() {
 							</div>
 							<div className="iconsWrapper">
 								<div className="iconsItem d-inline-block d-md-block d-lg-none">
-									<Link to="index.html" className="active">
+									<Link to="/" className="active">
 										<i className="glyph-icon flaticon-home-1"></i>
 									</Link>
 								</div>
@@ -105,7 +105,7 @@ function NavBar() {
 									</ul>
 								</div>
 								<div className="iconsItem d-none d-lg-inline-block">
-									<Link to="faq.html">
+									<Link to="/faq">
 										<i className="glyph-icon flaticon-headphones"></i>
 									</Link>
 								</div>
