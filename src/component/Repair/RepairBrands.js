@@ -21,6 +21,7 @@ function RepairBrands(item) {
 			setActiveBrands(false);
 			setActiveMobiles(false);
 			setBrandName('');
+			setPrice([0, 0]);
 		} else {
 			setBrandName(item);
 			setActiveBrands(true);
@@ -30,6 +31,7 @@ function RepairBrands(item) {
 	};
 	const onClickMobileHandler = item => {
 		if (activeMobiles) {
+			setPrice([0, 0]);
 			setSelectBrand(false);
 			setSelectMobile(true);
 			setActiveMobiles(false);
