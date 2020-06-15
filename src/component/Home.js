@@ -5,7 +5,7 @@ import Help from './help/Help';
 import Procedure from './procedure/Procedures';
 import Service from './service/Services';
 import Brands from './brand/Brands';
-import Collaborate from './collaborate/Collaborate';
+import Collaborate from './repairAndCollaborate/Collaborate';
 import Modal from './Modal';
 function Home() {
 	useEffect(() => {

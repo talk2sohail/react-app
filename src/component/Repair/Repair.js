@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import RepairBanner from './RepairBanner';
-import Collborate from '../collaborate/Collaborate';
+import Collborate from '../repairAndCollaborate/Collaborate';
 import RepairLogos from './ReapirLogo';
 import RepairBrand from './RepairBrands';
 import Services from '../service/Services';

@@ -1,24 +1,77 @@
-import React, { useState } from 'react';
-import { brandsData } from '../../data/RepairData';
-import ImageUtil from '../util/ImageUtil';
+import React, { useState, useEffect } from 'react';
+import BrandSearch from './SearchBrand';
+import RepairUtil from './BrandsSelection';
+import MobleSelection from '../MobleSelection';
+import IssueSelection from '../IssuesSelection';
+import Checkout from '../Checkout';
 function RepairBrands() {
-	const [repairBrands, setRepairBrands] = useState(brandsData);
+	useEffect(() => {
+		window.scrollTo(0, 450);
+	});
+	const [selectBrand, setSelectBrand] = useState(true);
+	const [selectMobile, setSelectMobile] = useState(false);
+	const [selectIssue, setSelectIssue] = useState(false);
+	const [activeBrands, setActiveBrands] = useState(false);
+	const [activeMobiles, setActiveMobiles] = useState(false);
+	const onClickBrandHandler = e => {
+		if (activeBrands) {
+			setSelectBrand(true);
+			setSelectMobile(false);
+			setSelectIssue(false);
+			setActiveBrands(false);
+			setActiveMobiles(false);
+		} else {
+			setActiveBrands(true);
+			setSelectBrand(false);
+			setSelectMobile(true);
+		}
+	};
+	const onClickMobileHandler = e => {
+		if (activeMobiles) {
+			setSelectBrand(false);
+			setSelectMobile(true);
+			setActiveMobiles(false);
+			setSelectIssue(false);
+		} else {
+			setSelectMobile(false);
+			setActiveMobiles(true);
+			setSelectIssue(true);
+		}
+	};
 	return (
 		<section className="repairSelection">
 			<div className="sectionWrapper">
 				<div className="row no-gutters align-items-center justify-content-between">
-					<div className="col-4">
+					<div
+						className="col-4"
+						onClick={() => {
+							if (activeBrands) onClickBrandHandler();
+						}}
+					>
 						<a
 							href="javascript:void(0)"
-							className="text-center progressBooking"
+							className={
+								activeBrands
+									? 'text-center progressBooking active'
+									: 'text-center progressBooking'
+							}
 						>
 							Brand
 						</a>
 					</div>
-					<div className="col-4">
+					<div
+						className="col-4"
+						onClick={() => {
+							if (activeMobiles) onClickMobileHandler();
+						}}
+					>
 						<a
 							href="javascript:void(0)"
-							className="text-center progressBooking"
+							className={
+								activeMobiles
+									? 'text-center progressBooking active'
+									: 'text-center progressBooking'
+							}
 						>
 							Mobile
 						</a>
@@ -32,45 +85,17 @@ function RepairBrands() {
 						</a>
 					</div>
 				</div>
+				{selectIssue ? <Checkout /> : <BrandSearch />}
 				<div className="row no-gutters justify-content-start align-items-center selectOption">
-					<div className="col-12 col-md-6">
-						<h2>Select Your Mobile Brand</h2>
-					</div>
-					<div className="col-12 col-md-6 text-right mobileLeft">
-						<form action="#" className="searchBar">
-							<input
-								type="search"
-								placeholder="Search Your Mobile Here"
-								className="mt-0"
-							/>
-							<button type="submit">
-								<img
-									src="assets/images/icons/search.png"
-									width="20"
-									alt=""
-								/>
-							</button>
-						</form>
-					</div>
-				</div>
-				<div className="row no-gutters justify-content-start align-items-center selectOption">
-					{/* <!-- apple --> */}
-					{repairBrands.map(item => (
-						<div key={item.key} className="col-6 col-md-4 col-lg-2">
-							<div className="branWrap">
-								<div className="imgWrapBrand">
-									<ImageUtil
-										src={`assets/images/brandLogos/${item.img}`}
-										className="d-block text-center mx-auto"
-										alt=""
-									/>
-								</div>
-								<h3 className="text-center uppercase">
-									{item.name}
-								</h3>
-							</div>
-						</div>
-					))}
+					{selectBrand && (
+						<RepairUtil onClickBrandHandler={onClickBrandHandler} />
+					)}
+					{selectMobile && (
+						<MobleSelection
+							onClickMobileHandler={onClickMobileHandler}
+						/>
+					)}
+					{selectIssue && <IssueSelection />}
 				</div>
 			</div>
 		</section>

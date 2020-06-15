@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import Collaborare from '../collaborate/Collaborate';
+import Collaborare from '../repairAndCollaborate/Collaborate';
 
 function About() {
 	useEffect(() => {
