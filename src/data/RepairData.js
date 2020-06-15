@@ -27,10 +27,55 @@ exports.brandsData = [
 ];
 
 exports.mobileData = [
-	{ key: 12, img: 'oneplussixt.png', mobileName: 'OnePlus 6T' },
-	{ key: 13, img: 'oneplussixt.png', mobileName: 'OnePlus 6T' },
-	{ key: 14, img: 'oneplussixt.png', mobileName: 'OnePlus 6T' },
-	{ key: 15, img: 'oneplussixt.png', mobileName: 'OnePlus 6T' },
-	{ key: 16, img: 'oneplussixt.png', mobileName: 'OnePlus 6T' },
+	{ key: 12, img: 'oneplussixt.png', mobileName: 'OnePlus 1T' },
+	{ key: 13, img: 'oneplussixt.png', mobileName: 'OnePlus 2T' },
+	{ key: 14, img: 'oneplussixt.png', mobileName: 'OnePlus 3T' },
+	{ key: 15, img: 'oneplussixt.png', mobileName: 'OnePlus 4T' },
+	{ key: 16, img: 'oneplussixt.png', mobileName: 'OnePlus 5T' },
 	{ key: 17, img: 'oneplussixt.png', mobileName: 'OnePlus 6T' },
+];
+
+exports.issueData = [
+	{
+		key: 0,
+		issue: 'Broken Screen',
+		discription: 'Lorem ipsum dolor, sit amet consectetur',
+		minPrice: 999,
+		maxPrice: 9999,
+	},
+	{
+		key: 1,
+		issue: 'Broken Screen',
+		discription: 'Lorem ipsum dolor, sit amet consectetur',
+		minPrice: 999,
+		maxPrice: 9999,
+	},
+	{
+		key: 2,
+		issue: 'Broken Screen',
+		discription: 'Lorem ipsum dolor, sit amet consectetur',
+		minPrice: 999,
+		maxPrice: 9999,
+	},
+	{
+		key: 3,
+		issue: 'Broken Screen',
+		discription: 'Lorem ipsum dolor, sit amet consectetur',
+		minPrice: 999,
+		maxPrice: 9999,
+	},
+	{
+		key: 4,
+		issue: 'Broken Screen',
+		discription: 'Lorem ipsum dolor, sit amet consectetur',
+		minPrice: 999,
+		maxPrice: 9999,
+	},
+	{
+		key: 5,
+		issue: 'Broken Screen',
+		discription: 'Lorem ipsum dolor, sit amet consectetur',
+		minPrice: 999,
+		maxPrice: 9999,
+	},
 ];

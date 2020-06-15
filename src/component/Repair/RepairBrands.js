@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import BrandSearch from './SearchBrand';
 import RepairUtil from './BrandsSelection';
 import MobleSelection from '../MobleSelection';
 import IssueSelection from '../IssuesSelection';
 import Checkout from '../Checkout';
-function RepairBrands() {
+function RepairBrands(item) {
 	const [selectBrand, setSelectBrand] = useState(true);
+	const [brandName, setBrandName] = useState('');
 	const [selectMobile, setSelectMobile] = useState(false);
 	const [selectIssue, setSelectIssue] = useState(false);
 	const [activeBrands, setActiveBrands] = useState(false);
 	const [activeMobiles, setActiveMobiles] = useState(false);
-	const onClickBrandHandler = e => {
+	const [mobileName, setmobileName] = useState('');
+	const [price, setPrice] = useState([0, 0]);
+	const onClickBrandHandler = item => {
 		if (activeBrands) {
 			setSelectBrand(true);
 			setSelectMobile(false);
 			setSelectIssue(false);
 			setActiveBrands(false);
 			setActiveMobiles(false);
+			setBrandName('');
 		} else {
+			setBrandName(item);
 			setActiveBrands(true);
 			setSelectBrand(false);
 			setSelectMobile(true);
 		}
 	};
-	const onClickMobileHandler = e => {
+	const onClickMobileHandler = item => {
 		if (activeMobiles) {
 			setSelectBrand(false);
 			setSelectMobile(true);
 			setActiveMobiles(false);
 			setSelectIssue(false);
+			setmobileName('');
 		} else {
+			setmobileName(item);
 			setSelectMobile(false);
 			setActiveMobiles(true);
 			setSelectIssue(true);
 		}
+	};
+
+	const priceHandle = (minPrice, maxPrice) => {
+		setPrice([price[0] + minPrice, price[1] + maxPrice]);
 	};
 	return (
 		<section className="repairSelection">
@@ -53,7 +64,7 @@ function RepairBrands() {
 									: 'text-center progressBooking'
 							}
 						>
-							Brand
+							{brandName ? brandName : 'Brand'}
 						</a>
 					</div>
 					<div
@@ -82,17 +93,31 @@ function RepairBrands() {
 						</a>
 					</div>
 				</div>
-				{selectIssue ? <Checkout /> : <BrandSearch />}
 
 				{selectBrand && (
-					<RepairUtil onClickBrandHandler={onClickBrandHandler} />
+					<Fragment>
+						<BrandSearch msg="Select Your Brand" />
+						<RepairUtil onClickBrandHandler={onClickBrandHandler} />
+					</Fragment>
 				)}
 				{selectMobile && (
-					<MobleSelection
-						onClickMobileHandler={onClickMobileHandler}
-					/>
+					<Fragment>
+						<BrandSearch msg={`Select Your ${brandName} Device`} />
+						<MobleSelection
+							onClickMobileHandler={onClickMobileHandler}
+						/>
+					</Fragment>
 				)}
-				{selectIssue && <IssueSelection />}
+				{selectIssue && (
+					<Fragment>
+						<Checkout
+							msg={`Select Your issue in ${mobileName}`}
+							min={price[0]}
+							max={price[1]}
+						/>
+						<IssueSelection priceHandle={priceHandle} />
+					</Fragment>
+				)}
 			</div>
 		</section>
 	);

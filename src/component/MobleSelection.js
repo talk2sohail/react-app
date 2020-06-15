@@ -1,14 +1,19 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { mobileData } from '../data/RepairData';
 function MobleSelection({ onClickMobileHandler }) {
 	const [mobiles, setMobiles] = useState(mobileData);
+	useEffect(() => {
+		window.scrollTo(0, 500);
+	});
 	return (
 		<div className="row no-gutters justify-content-start align-items-center selectOption mobileSelect">
 			{mobiles.map(item => (
 				<div
 					className="col-6 col-md-4 col-lg-2"
 					key={item.key}
-					onClick={onClickMobileHandler}
+					onClick={() => {
+						onClickMobileHandler(item.mobileName);
+					}}
 				>
 					<div className="branWrap">
 						<div className="imgWrapBrand">

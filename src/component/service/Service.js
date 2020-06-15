@@ -1,19 +1,10 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import ImageUtil from "../../component/util/ImageUtil";
-import Tilt from "react-tilt";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Tilt from 'react-tilt';
 function Service({ item }) {
 	const { img, repairName } = item;
 	return (
-<<<<<<< HEAD
-		<Tilt
-			className="Tilt"
-			options={{ max: 35, scale: 1, reverse: true }}
-			style={{ height: 400, width: 250 }}
-		>
-=======
 		<Tilt className="Tilt" options={{ max: 25, scale: 1, reverse: true }}>
->>>>>>> 244c721ad0bf7b720fd82433e458c5aa633fd8ff
 			<Link to="javascript:void(0)" className="text-center">
 				<img
 					key={item.key}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { brandsData } from '../../data/RepairData';
 function BrandsSelection({ onClickBrandHandler }) {
 	const [repairBrands, setRepairBrands] = useState(brandsData);
@@ -9,14 +9,16 @@ function BrandsSelection({ onClickBrandHandler }) {
 				<div
 					key={item.key}
 					className="col-6 col-md-4 col-lg-2"
-					onClick={onClickBrandHandler}
+					onClick={() => {
+						onClickBrandHandler(item.brandName);
+					}}
 				>
 					<div className="branWrap">
 						<div className="imgWrapBrand">
 							<img
 								src={`assets/images/brandLogos/${item.img}`}
 								className="d-block text-center mx-auto"
-								alt=""
+								alt={item.brandName}
 							/>
 						</div>
 						<h3 className="text-center uppercase">
