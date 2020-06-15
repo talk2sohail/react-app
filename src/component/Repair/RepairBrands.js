@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BrandSearch from './SearchBrand';
 import RepairUtil from './BrandsSelection';
 import MobleSelection from '../MobleSelection';
 import IssueSelection from '../IssuesSelection';
 import Checkout from '../Checkout';
 function RepairBrands() {
-	useEffect(() => {
-		window.scrollTo(0, 450);
-	});
 	const [selectBrand, setSelectBrand] = useState(true);
 	const [selectMobile, setSelectMobile] = useState(false);
 	const [selectIssue, setSelectIssue] = useState(false);
@@ -86,17 +83,16 @@ function RepairBrands() {
 					</div>
 				</div>
 				{selectIssue ? <Checkout /> : <BrandSearch />}
-				<div className="row no-gutters justify-content-start align-items-center selectOption">
-					{selectBrand && (
-						<RepairUtil onClickBrandHandler={onClickBrandHandler} />
-					)}
-					{selectMobile && (
-						<MobleSelection
-							onClickMobileHandler={onClickMobileHandler}
-						/>
-					)}
-					{selectIssue && <IssueSelection />}
-				</div>
+
+				{selectBrand && (
+					<RepairUtil onClickBrandHandler={onClickBrandHandler} />
+				)}
+				{selectMobile && (
+					<MobleSelection
+						onClickMobileHandler={onClickMobileHandler}
+					/>
+				)}
+				{selectIssue && <IssueSelection />}
 			</div>
 		</section>
 	);

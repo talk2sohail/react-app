@@ -2,7 +2,9 @@ import React from 'react';
 
 function SearchBrand() {
 	return (
-		<div className="row no-gutters justify-content-start align-items-center selectOption">
+		<div
+            className="row no-gutters justify-content-start align-items-center selectOption mobileSelect"
+          >
 			<div className="col-12 col-md-6">
 				<h2>Select Your Mobile Brand</h2>
 			</div>

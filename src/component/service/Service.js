@@ -7,11 +7,11 @@ function Service({ item }) {
 	return (
 		<Tilt
 			className="Tilt"
-			options={{ max: 25 }}
-			style={{ height: 250, width: 250 }}
+			options={{ max: 35, scale: 1, reverse: true }}
+			style={{ height: 400, width: 250 }}
 		>
 			<Link to="javascript:void(0)" className="text-center">
-				<ImageUtil
+				<img
 					key={item.key}
 					src={`assets/images/background/${img}`}
 					alt=""

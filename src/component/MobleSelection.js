@@ -1,10 +1,9 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { mobileData } from '../data/RepairData';
-import ImageUtil from './util/ImageUtil';
 function MobleSelection({ onClickMobileHandler }) {
 	const [mobiles, setMobiles] = useState(mobileData);
 	return (
-		<Fragment>
+		<div className="row no-gutters justify-content-start align-items-center selectOption mobileSelect">
 			{mobiles.map(item => (
 				<div
 					className="col-6 col-md-4 col-lg-2"
@@ -13,7 +12,7 @@ function MobleSelection({ onClickMobileHandler }) {
 				>
 					<div className="branWrap">
 						<div className="imgWrapBrand">
-							<ImageUtil
+							<img
 								src={`assets/images/mobiles/oneplus/${item.img}`}
 								className="d-block text-center mx-auto"
 								alt=""
@@ -25,7 +24,7 @@ function MobleSelection({ onClickMobileHandler }) {
 					</div>
 				</div>
 			))}
-		</Fragment>
+		</div>
 	);
 }
 

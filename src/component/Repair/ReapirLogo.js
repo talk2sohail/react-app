@@ -9,7 +9,7 @@ function ReapirLogo() {
 				<div className="d-flex justify-content-around wrapper">
 					{logos.map(item => (
 						<div className="customerLogo" key={item.key}>
-							<ImageUtil
+							<img
 								alt=""
 								src={`assets/images/brandLogos/repair/${item.img}`}
 							/>
