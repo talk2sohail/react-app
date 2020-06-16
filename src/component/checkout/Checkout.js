@@ -5,7 +5,7 @@ import PickupAddress from './PickupAddress';
 import DeliverAddress from './DeliverAddress';
 function Checkout() {
 	useEffect(() => {
-		window.scrollBy(0, 0);
+		window.scroll(0, 0);
 	}, []);
 	return (
 		<section className="checkoutWrapper profileWrapper">
