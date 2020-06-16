@@ -83,7 +83,7 @@ function RepairBrands(item) {
 									: 'text-center progressBooking'
 							}
 						>
-							Mobile
+							{mobileName ? mobileName : 'Mobile'}
 						</a>
 					</div>
 					<div className="col-4">
