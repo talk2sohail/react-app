@@ -6,6 +6,7 @@ import Footer from './component/footer/Footer';
 import About from './component/about/About';
 import Repair from './component/Repair/Repair';
 import Page404 from './component/Error404';
+import Checkout from './component/checkout/Checkout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Faq from './component/FAQ/Faq';
 function App() {
@@ -19,6 +20,7 @@ function App() {
 					<Route path="/faq" component={Faq} exact />
 					<Route path="/about" component={About} exact />
 					<Route path="/repair" component={Repair} exact />
+					<Route path="/checkout" component={Checkout} exact />
 					<Route component={Page404} />
 				</Switch>
 				<Footer />

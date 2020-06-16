@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { logoData } from '../../data/RepairData';
-import ImageUtil from '../util/ImageUtil';
+
 function ReapirLogo() {
 	const [logos, setLogos] = useState(logoData);
 	return (
