@@ -33,7 +33,7 @@ function IssuesSelection({ priceHandle }) {
 							<h4>{item.issue}</h4>
 							<p>{item.discription}</p>
 							<p className="price">
-								Rs {item.minPrice} - Rs {item.minPrice}
+								Rs {item.minPrice} - Rs {item.maxPrice}
 							</p>
 						</div>
 						<a

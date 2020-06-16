@@ -3,7 +3,7 @@ import BrandSearch from './SearchBrand';
 import RepairUtil from './BrandsSelection';
 import MobleSelection from '../MobleSelection';
 import IssueSelection from '../IssuesSelection';
-import Checkout from '../Checkout';
+import Checkout from './RepairCheckout';
 function RepairBrands(item) {
 	const [selectBrand, setSelectBrand] = useState(true);
 	const [brandName, setBrandName] = useState('');
@@ -83,7 +83,7 @@ function RepairBrands(item) {
 									: 'text-center progressBooking'
 							}
 						>
-							Mobile
+							{mobileName ? mobileName : 'Mobile'}
 						</a>
 					</div>
 					<div className="col-4">
