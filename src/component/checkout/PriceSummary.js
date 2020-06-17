@@ -1,6 +1,9 @@
 import React from 'react';
 
-function PriceSummary() {
+function PriceSummary({ pickUp }) {
+	let myCart = localStorage.getItem('myCart');
+	myCart = JSON.parse(myCart);
+
 	return (
 		<div className="col-12 col-lg-4">
 			<div className="priceSummary">
@@ -8,33 +11,26 @@ function PriceSummary() {
 					<h3>Price Summary</h3>
 				</div>
 				<div className="priceBody">
-					<p className="price">
-						OnePlus 6T Screen
-						<span className="float-right">Rs 800 - Rs 900</span>
-					</p>
-					<p className="price borderB">
-						OnePlus 6T Mic
-						<span className="float-right">Rs 599 - Rs 700</span>
-					</p>
+					{myCart.map((item, index) =>
+						item.issue.map((doc, index) => (
+							<p className="price" key={index}>
+								{item.brand} {item.model} {doc.issue}
+								<span className="float-right">
+									Rs {doc.price[0]} - Rs {doc.price[1]}
+								</span>
+							</p>
+						))
+					)}
 					<p className="tax">
 						Tax <span className="float-right">Rs 0</span>
 					</p>
-					<p className="tax">
-						Pickup Charge <span className="float-right">Rs 0</span>
-					</p>
-					{/* <!-- <p className="total">
-Amount Payable <span className="float-right">Rs 1399</span>
-</p> -->
-<!-- <form>
-<p>Payment Type</p>
-<div>
-<input type="radio" id="test1" name="radio-group" />
-<label for="test1">Cash</label>
+					{pickUp && (
+						<p className="tax">
+							Pickup Charge{' '}
+							<span className="float-right">Rs 0</span>
+						</p>
+					)}
 
-<input type="radio" id="test2" name="radio-group" />
-<label for="test2" className="ml-3">Card</label>
-</div>
-</form> --> */}
 					<div className="position-relative agreeTC">
 						<input type="checkbox" checked id="agree" name="" />
 						<label htmlFor="agree">
@@ -60,23 +56,6 @@ Amount Payable <span className="float-right">Rs 1399</span>
 					BOOK NOW
 				</a>
 			</div>
-			{/* <!-- <div className="priceSummary couponCode">
-<div className="priceHeader">
-<h3>Apply Coupon Code</h3>
-</div>
-<form className="row no-gutters">
-<div className="col-12 col-lg-9">
-<input
-className="mb-0"
-type="text"
-placeholder="Enter Coupon Code"
-/>
-</div>
-<div className="col-12 col-lg-3">
-<input className="mb-0 btnSub" type="submit" value="APPLY" />
-</div>
-</form>
-</div> --> */}
 		</div>
 	);
 }

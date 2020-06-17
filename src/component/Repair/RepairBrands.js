@@ -4,6 +4,7 @@ import RepairUtil from './BrandsSelection';
 import MobleSelection from '../MobleSelection';
 import IssueSelection from '../IssuesSelection';
 import Checkout from './RepairCheckout';
+
 function RepairBrands(item) {
 	const [selectBrand, setSelectBrand] = useState(true);
 	const [brandName, setBrandName] = useState('');
@@ -13,6 +14,8 @@ function RepairBrands(item) {
 	const [activeMobiles, setActiveMobiles] = useState(false);
 	const [mobileName, setmobileName] = useState('');
 	const [price, setPrice] = useState([0, 0]);
+	const [issuesName, setIssuesName] = useState({});
+
 	const onClickBrandHandler = item => {
 		if (activeBrands) {
 			setSelectBrand(true);
@@ -44,9 +47,49 @@ function RepairBrands(item) {
 			setSelectIssue(true);
 		}
 	};
-
 	const priceHandle = (minPrice, maxPrice) => {
 		setPrice([price[0] + minPrice, price[1] + maxPrice]);
+	};
+	const issueHandler = (index, issue, minPrice, maxPrice) => {
+		let obj = { ...issuesName };
+		if (obj[index]) {
+			priceHandle(-minPrice, -maxPrice);
+			obj[index] = '';
+		} else {
+			priceHandle(minPrice, maxPrice);
+
+			obj[index] = {
+				issue: issue,
+				price: [minPrice, maxPrice],
+			};
+		}
+		setIssuesName(obj);
+	};
+	console.log(issuesName);
+	const CkechoutHandler = () => {
+		let myCart = localStorage.getItem('myCart');
+		let issue = [];
+		console.log(issuesName);
+		for (let [key, value] of Object.entries(issuesName)) {
+			issue.push(value);
+			// console.log(key, value);
+		}
+		let summary = {
+			brand: brandName,
+			model: mobileName,
+			issue: issue,
+			price: price,
+		};
+		if (!myCart) {
+			localStorage.setItem('myCart', JSON.stringify([summary]));
+		} else {
+			localStorage.removeItem('myCart');
+			myCart = JSON.parse(myCart);
+			console.log('a', myCart);
+			myCart.push(summary);
+			localStorage.setItem('myCart', JSON.stringify(myCart));
+		}
+		console.log(summary);
 	};
 	return (
 		<section className="repairSelection">
@@ -116,8 +159,12 @@ function RepairBrands(item) {
 							msg={`Select Your issue in ${mobileName}`}
 							min={price[0]}
 							max={price[1]}
+							CkechoutHandler={CkechoutHandler}
 						/>
-						<IssueSelection priceHandle={priceHandle} />
+						<IssueSelection
+							issueHandler={issueHandler}
+							state={issuesName}
+						/>
 					</Fragment>
 				)}
 			</div>

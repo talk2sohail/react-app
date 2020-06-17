@@ -3,16 +3,25 @@ import CheckOutForm from './CheckOutForm';
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
 import AddAddress from './AddAddress';
-import { AddressHook } from '../util/CheckoutFormUtil';
-function PickupAddress() {
-	const {
-		userInfo,
-		checkOuthandler,
-		checkOutSubmithandler,
-		showForm,
-		showFormHandler,
-	} = AddressHook();
-
+import { AddressHook, FormShowHook } from '../util/CheckoutFormUtil';
+import UserAddress from '../UserAddress';
+function PickupAddress({
+	pickUpHandler,
+	dropHandler,
+	pickUpaddressHandler,
+	pickUpAddress,
+}) {
+	const [userInfo, checkOuthandler, checkOutSubmithandler] = AddressHook({
+		fName: '',
+		lName: '',
+		locality: '',
+		address: '',
+		pincode: '',
+		phoneNumber: '',
+		email: '',
+	});
+	const [showForm, showFormHandler] = FormShowHook(false);
+	const [Address, setAddress] = useState({});
 	return (
 		<div className="userWrapper mt-4">
 			<div className="userHeader">
@@ -30,6 +39,8 @@ function PickupAddress() {
 						liId2="profile-tab"
 						lihref2="#profile"
 						control2="profile"
+						pickUpHandler={pickUpHandler}
+						dropHandler={dropHandler}
 					/>
 					<div className="tab-content" id="myTabContent">
 						<div
@@ -39,16 +50,12 @@ function PickupAddress() {
 							aria-labelledby="home-tab"
 						>
 							<AddAddress showFormHandler={showFormHandler} />
-							<div className="savedAddress selected">
-								<h3>
-									Md Javed Akhtar <span>9831983198</span>
-								</h3>
-								<p>
-									10, Park Street, Kolkata-700 016. Park
-									Street Police Station
-								</p>
-								<p>Kolkata, West Bengal - 700016</p>
-							</div>
+							{!showForm && (
+								<UserAddress
+									AddressHandler={pickUpaddressHandler}
+									Address={pickUpAddress}
+								/>
+							)}
 							{showForm && (
 								<CheckOutForm
 									checkOuthandler={checkOuthandler}
@@ -56,6 +63,7 @@ function PickupAddress() {
 									checkOutSubmithandler={
 										checkOutSubmithandler
 									}
+									showFormHandler={showFormHandler}
 								/>
 							)}
 						</div>

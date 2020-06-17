@@ -1,15 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-function RepairCheckout({ msg, min, max }) {
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import Checkout from '../checkout/Checkout';
+function RepairCheckout({ msg, min, max, CkechoutHandler }) {
+	const [error, setError] = useState(false);
+	let history = useHistory();
+	const checkoutHandler = () => {
+		if (!max) {
+			setError(true);
+			setTimeout(() => {
+				setError(false);
+			}, 2000);
+		} else {
+			CkechoutHandler();
+			history.push('/checkout');
+		}
+	};
 	return (
 		<div className="row no-gutters justify-content-start align-items-center selectOption mt-2">
 			<div className="col-12 col-md-6">
 				<h2>{msg}</h2>
 			</div>
-			<div className="col-12 col-md-6 text-right buttons">
-				<Link to="/checkout">
+
+			<div
+				className="col-12 col-md-6 text-right buttons"
+				onClick={checkoutHandler}
+			>
+				{error && (
+					<p style={{ color: 'red' }}>please select any issue</p>
+				)}
+				<a style={{ cursor: 'pointer' }}>
 					Checkout Rs({min}-{max})
-				</Link>
+				</a>
 			</div>
 		</div>
 	);

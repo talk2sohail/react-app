@@ -37,43 +37,37 @@ exports.mobileData = [
 
 exports.issueData = [
 	{
-		key: 0,
 		issue: 'Broken Screen',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
 		minPrice: 999,
 		maxPrice: 9999,
 	},
 	{
-		key: 1,
-		issue: 'Broken Screen',
+		issue: 'Battery issue',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
 		minPrice: 100,
 		maxPrice: 1000,
 	},
 	{
-		key: 2,
-		issue: 'Broken Screen',
+		issue: 'physical Damage',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
 		minPrice: 199,
 		maxPrice: 1999,
 	},
 	{
-		key: 3,
-		issue: 'Broken Screen',
+		issue: 'Cracked',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
 		minPrice: 599,
 		maxPrice: 5999,
 	},
 	{
-		key: 4,
-		issue: 'Broken Screen',
+		issue: 'Software issue',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
 		minPrice: 299,
 		maxPrice: 1999,
 	},
 	{
-		key: 5,
-		issue: 'Broken Screen',
+		issue: 'Virus issue',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
 		minPrice: 300,
 		maxPrice: 5000,
