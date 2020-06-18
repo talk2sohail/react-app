@@ -5,7 +5,7 @@ function Modal() {
 		<div
 			className="modal fade"
 			id="forgotPass"
-			tabindex="-1"
+			tabIndex="-1"
 			role="dialog"
 			aria-labelledby="forgotPassswordTitle"
 			aria-hidden="true"
@@ -37,7 +37,7 @@ function Modal() {
 								value=""
 								pattern="[0-9]{1}[0-9]{9}"
 								placeholder="Enter OTP"
-								maxlength="4"
+								maxLength="4"
 								className="d-none"
 							/>
 							<a

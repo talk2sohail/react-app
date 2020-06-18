@@ -1,6 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+function PriceSummary({ pickUp }) {
+	let myCart = localStorage.getItem('myCart');
+	myCart = JSON.parse(myCart);
 
-function PriceSummary() {
 	return (
 		<div className="col-12 col-lg-4">
 			<div className="priceSummary">
@@ -8,33 +11,53 @@ function PriceSummary() {
 					<h3>Price Summary</h3>
 				</div>
 				<div className="priceBody">
-					<p className="price">
-						OnePlus 6T Screen
-						<span className="float-right">Rs 800 - Rs 900</span>
-					</p>
-					<p className="price borderB">
-						OnePlus 6T Mic
-						<span className="float-right">Rs 599 - Rs 700</span>
-					</p>
+					{myCart.map((item, index) => (
+						<span
+							className="price priceHeader"
+							style={{ fontSize: 14 }}
+							key={index}
+						>
+							<span
+								style={{
+									fontWeight: 'bold',
+									display: 'block',
+									paddingBottom: 11,
+								}}
+							>
+								{item.brand} {item.model}
+							</span>
+							{item.issue.map((doc, index) => (
+								<ul
+									style={{
+										paddingLeft: 0,
+										display: 'flex',
+										justifyContent: 'space-between',
+									}}
+									key={index}
+								>
+									<li style={{ listStyle: 'none' }}>
+										{doc.issue}
+									</li>
+									<span
+										style={{ paddingLeft: 85 }}
+										className="float-right"
+									>
+										Rs {doc.price[0]} - Rs {doc.price[1]}
+									</span>
+								</ul>
+							))}
+						</span>
+					))}
 					<p className="tax">
 						Tax <span className="float-right">Rs 0</span>
 					</p>
-					<p className="tax">
-						Pickup Charge <span className="float-right">Rs 0</span>
-					</p>
-					{/* <!-- <p className="total">
-Amount Payable <span className="float-right">Rs 1399</span>
-</p> -->
-<!-- <form>
-<p>Payment Type</p>
-<div>
-<input type="radio" id="test1" name="radio-group" />
-<label for="test1">Cash</label>
+					{pickUp && (
+						<p className="tax">
+							Pickup Charge{' '}
+							<span className="float-right">Rs 0</span>
+						</p>
+					)}
 
-<input type="radio" id="test2" name="radio-group" />
-<label for="test2" className="ml-3">Card</label>
-</div>
-</form> --> */}
 					<div className="position-relative agreeTC">
 						<input type="checkbox" checked id="agree" name="" />
 						<label htmlFor="agree">
@@ -53,32 +76,63 @@ Amount Payable <span className="float-right">Rs 1399</span>
 						</label>
 					</div>
 				</div>
-				<a
-					href="javascript:void(0)"
+				<Link
+					to="/checkout/thankyou"
 					className="d-block text-center btnBook"
 				>
 					BOOK NOW
-				</a>
+				</Link>
 			</div>
-			{/* <!-- <div className="priceSummary couponCode">
-<div className="priceHeader">
-<h3>Apply Coupon Code</h3>
-</div>
-<form className="row no-gutters">
-<div className="col-12 col-lg-9">
-<input
-className="mb-0"
-type="text"
-placeholder="Enter Coupon Code"
-/>
-</div>
-<div className="col-12 col-lg-3">
-<input className="mb-0 btnSub" type="submit" value="APPLY" />
-</div>
-</form>
-</div> --> */}
 		</div>
 	);
 }
 
 export default PriceSummary;
+
+{
+	/* <div className="priceBody">
+											{this.state.cart_details.map((cart, i) => {
+												return (
+													<span
+														className="price priceHeader"
+														style={{ fontSize: 14 }}
+														key={i}
+													>
+														<span
+															style={{
+																fontWeight: "bold",
+																display: "block",
+																paddingBottom: 11,
+															}}
+														>
+															{cart.brand} {cart.mobile}
+														</span>
+														{cart.issue.map((iss, j) => {
+															return (
+																<ul
+																	style={{
+																		paddingLeft: 0,
+																		display: "flex",
+																		justifyContent: "space-between",
+																	}}
+																	key={j}
+																>
+																	<li style={{ listStyle: "none" }}>
+																		{iss.issue_name}
+																	</li>
+																	<span
+																		style={{ paddingLeft: 85 }}
+																		className="float-right"
+																	>
+																		Rs {iss.low} - Rs {iss.high}
+																	</span>
+																</ul>
+															);
+														})}
+													</span>
+												);
+											})}
+											<p className="tax">
+												Tax <span className="float-right">Rs 25</span>
+		 */
+}

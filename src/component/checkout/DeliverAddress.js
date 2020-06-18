@@ -3,15 +3,24 @@ import CheckOutForm from './CheckOutForm';
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
 import AddAddress from './AddAddress';
-import { AddressHook } from '../util/CheckoutFormUtil';
-function DeliverAddress() {
-	const {
-		userInfo,
-		checkOuthandler,
-		checkOutSubmithandler,
-		showForm,
-		showFormHandler,
-	} = AddressHook();
+import UserAddress from '../UserAddress';
+import { AddressHook, FormShowHook } from '../util/CheckoutFormUtil';
+function DeliverAddress({
+	deliveraddressHandler,
+	deliverPickHandler,
+	deliverDropHandler,
+	deliverAddres,
+}) {
+	const [userInfo, checkOuthandler, checkOutSubmithandler] = AddressHook({
+		fName: '',
+		lName: '',
+		locality: '',
+		address: '',
+		pincode: '',
+		phoneNumber: '',
+		email: '',
+	});
+	const [showForm, showFormHandler] = FormShowHook(false);
 	return (
 		<div className="userWrapper mt-4">
 			<div className="userHeader">
@@ -29,6 +38,8 @@ function DeliverAddress() {
 						liId2="pickshop-tab"
 						lihref2="#pickshop"
 						ontrol2="pickshop"
+						pickUpHandler={deliverPickHandler}
+						dropHandler={deliverDropHandler}
 					/>
 					<div className="tab-content" id="myTabContentTwo">
 						<div
@@ -38,7 +49,12 @@ function DeliverAddress() {
 							aria-labelledby="homedelivery-tab"
 						>
 							<AddAddress showFormHandler={showFormHandler} />
-							{/* list of user addresses  */}
+							{!showForm && (
+								<UserAddress
+									AddressHandler={deliveraddressHandler}
+									Address={deliverAddres}
+								/>
+							)}
 							{showForm && (
 								<CheckOutForm
 									checkOuthandler={checkOuthandler}
@@ -46,6 +62,7 @@ function DeliverAddress() {
 									checkOutSubmithandler={
 										checkOutSubmithandler
 									}
+									showFormHandler={showFormHandler}
 								/>
 							)}
 						</div>

@@ -110,7 +110,7 @@ function NavBar() {
 									</Link>
 								</div>
 								<div className="iconsItem d-lg-inline-block d-md-block hasItems">
-									<Link to="checkout.html">
+									<Link to="/mycart">
 										<i className="glyph-icon flaticon-note"></i>
 										<div className="circleWrapper">
 											<div className="circle"></div>

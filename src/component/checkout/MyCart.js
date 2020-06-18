@@ -1,6 +1,9 @@
 import React from 'react';
+import MyCartUtil from './MyCartUtil';
 
 function MyCart() {
+	let myCart = localStorage.getItem('myCart');
+	myCart = JSON.parse(myCart);
 	return (
 		<div className="userWrapper">
 			<div className="userHeader">
@@ -8,24 +11,7 @@ function MyCart() {
 			</div>
 			<div className="userDetails">
 				<div className="orderBlock">
-					<div className="orderBody d-flex justify-content-start flex-wrap">
-						<div className="imgWrap">
-							<img
-								src="assets/images/mobiles/oneplus/oneplussixt.png"
-								alt=""
-							/>
-						</div>
-						<div className="contentWrap">
-							<h3>OnePlus 6T</h3>
-							<p>
-								<span>Color: </span> Midnight Black
-							</p>
-							<p>
-								<span>Issues: </span>
-								Screen Repair, Mic Repair
-							</p>
-						</div>
-					</div>
+					<MyCartUtil myCart={myCart} />
 				</div>
 			</div>
 		</div>
