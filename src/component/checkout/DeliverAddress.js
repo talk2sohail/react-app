@@ -21,13 +21,6 @@ function DeliverAddress({
 		email: '',
 	});
 	const [showForm, showFormHandler] = FormShowHook(false);
-	const [Address, setAddress] = useState({});
-	// const AddressHandler = (item, index) => {
-	// 	deliveraddressHandler(item, index);
-	// 	let obj = {};
-	// 	obj[index] = item;
-	// 	setAddress(obj);
-	// };
 	return (
 		<div className="userWrapper mt-4">
 			<div className="userHeader">

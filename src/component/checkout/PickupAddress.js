@@ -21,7 +21,6 @@ function PickupAddress({
 		email: '',
 	});
 	const [showForm, showFormHandler] = FormShowHook(false);
-	const [Address, setAddress] = useState({});
 	return (
 		<div className="userWrapper mt-4">
 			<div className="userHeader">

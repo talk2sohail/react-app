@@ -9,14 +9,9 @@ function MyCart() {
 			<div className="userHeader">
 				<h2>My Cart</h2>
 			</div>
-
 			<div className="userDetails">
 				<div className="orderBlock">
-					{myCart ? (
-						<MyCartUtil myCart={myCart} />
-					) : (
-						<h2>Your Cart Is Empty</h2>
-					)}
+					<MyCartUtil myCart={myCart} />
 				</div>
 			</div>
 		</div>

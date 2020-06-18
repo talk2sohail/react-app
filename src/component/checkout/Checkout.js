@@ -5,7 +5,7 @@ import PickupAddress from './PickupAddress';
 import DeliverAddress from './DeliverAddress';
 function Checkout() {
 	useEffect(() => {
-		window.scroll(0, 0);
+		window.scrollTo(0, 0);
 	}, []);
 	const [pickDrop, setPickDrop] = useState(true);
 	const [pickUpAddress, setPickUpAddress] = useState({});
