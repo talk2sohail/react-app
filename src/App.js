@@ -9,6 +9,7 @@ import Page404 from './component/Error404';
 import Checkout from './component/checkout/Checkout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Faq from './component/FAQ/Faq';
+import ThankYou from './component/ThankYou';
 function App() {
 	return (
 		<Router>
@@ -21,6 +22,11 @@ function App() {
 					<Route path="/about" component={About} exact />
 					<Route path="/repair" component={Repair} exact />
 					<Route path="/checkout" component={Checkout} exact />
+					<Route
+						path="/checkout/thankyou"
+						component={ThankYou}
+						exact
+					/>
 					<Route component={Page404} />
 				</Switch>
 				<Footer />
