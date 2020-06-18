@@ -1,11 +1,11 @@
 import React from 'react';
 
 function UserAddress({ AddressHandler, Address }) {
-	let address = localStorage.getItem('address');
-	address = JSON.parse(address);
+	let userAddress = localStorage.getItem('address');
+	userAddress = JSON.parse(userAddress);
 	return (
-		address &&
-		address.map((item, index) => (
+		userAddress &&
+		userAddress.map((item, index) => (
 			<div
 				className={
 					Address[index] ? 'savedAddress selected' : 'savedAddress'

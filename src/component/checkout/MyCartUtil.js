@@ -1,6 +1,6 @@
 import React from 'react';
-
-function MyCartUtil({ myCart }) {
+import { Link } from 'react-router-dom';
+function MyCartUtil({ myCart, cartHandler, callingFromCart = false }) {
 	return myCart.map((item, index) => (
 		<div
 			className="orderBody d-flex justify-content-start flex-wrap"
@@ -13,17 +13,28 @@ function MyCartUtil({ myCart }) {
 				/>
 			</div>
 			<div className="contentWrap">
-				<h3>
-					{item.brand} {item.model}
-				</h3>
+				<h3 style={{ fontWeight: 'bold' }}>{item.brand}</h3>
 				<p>
-					<span>Color: </span> Midnight Black
+					<span>Mobile: </span> {item.model}
 				</p>
-				<p>
-					<span>Issues: </span>
-					{item.issue.map(doc => doc.issue).join(', ')}
-				</p>
+				<ul style={{ paddingLeft: 15 }}>
+					{item.issue.map((doc, index) => (
+						<li key={index}>{doc.issue}</li>
+					))}
+				</ul>
 			</div>
+			{callingFromCart && (
+				<div style={{ marginLeft: 'auto', cursor: 'pointer' }}>
+					<div className="d-flex">
+						<div
+							onClick={() => cartHandler(item)}
+							className="removeBtn"
+						>
+							Remove
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	));
 }

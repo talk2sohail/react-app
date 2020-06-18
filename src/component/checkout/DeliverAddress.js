@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CheckOutForm from './CheckOutForm';
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
@@ -49,12 +49,12 @@ function DeliverAddress({
 							aria-labelledby="homedelivery-tab"
 						>
 							<AddAddress showFormHandler={showFormHandler} />
-							{!showForm && (
-								<UserAddress
-									AddressHandler={deliveraddressHandler}
-									Address={deliverAddres}
-								/>
-							)}
+
+							<UserAddress
+								AddressHandler={deliveraddressHandler}
+								Address={deliverAddres}
+							/>
+
 							{showForm && (
 								<CheckOutForm
 									checkOuthandler={checkOuthandler}

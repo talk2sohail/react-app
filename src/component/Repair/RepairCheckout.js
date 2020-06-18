@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Checkout from '../checkout/Checkout';
-function RepairCheckout({ msg, min, max, CkechoutHandler }) {
+function RepairCheckout({ msg, min, max, CheckOutHandler }) {
 	const [error, setError] = useState(false);
 	let history = useHistory();
 	const checkoutHandler = () => {
@@ -11,7 +10,7 @@ function RepairCheckout({ msg, min, max, CkechoutHandler }) {
 				setError(false);
 			}, 2000);
 		} else {
-			CkechoutHandler();
+			CheckOutHandler();
 			history.push('/checkout');
 		}
 	};

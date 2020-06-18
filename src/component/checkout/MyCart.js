@@ -4,6 +4,7 @@ import MyCartUtil from './MyCartUtil';
 function MyCart() {
 	let myCart = localStorage.getItem('myCart');
 	myCart = JSON.parse(myCart);
+
 	return (
 		<div className="userWrapper">
 			<div className="userHeader">

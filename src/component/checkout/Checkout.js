@@ -3,15 +3,17 @@ import MyCart from './MyCart';
 import PriceSummary from './PriceSummary';
 import PickupAddress from './PickupAddress';
 import DeliverAddress from './DeliverAddress';
+import { useHistory } from 'react-router-dom';
+import $ from 'jquery';
 function Checkout() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+	let history = useHistory();
 	const [pickDrop, setPickDrop] = useState(true);
 	const [pickUpAddress, setPickUpAddress] = useState({});
 	const [deliverAddres, setDeliverAddress] = useState({});
 	const [deliverDrop, setDeliverDrop] = useState(true);
-
 	const pickUpHandler = () => {
 		setPickDrop(true);
 	};
@@ -26,6 +28,7 @@ function Checkout() {
 	};
 
 	const pickUpaddressHandler = (item, index) => {
+		console.log(item);
 		let obj = {};
 		obj[index] = item;
 		setPickUpAddress(obj);
@@ -34,6 +37,27 @@ function Checkout() {
 		let obj = {};
 		obj[index] = item;
 		setDeliverAddress(obj);
+	};
+	const showError = () => {
+		setTimeout(() => {
+			seterror('');
+		}, 3000);
+	};
+	const [error, seterror] = useState('');
+	const onsubmitHandler = checked => {
+		// console.log(pickDrop, pickUpAddress);
+		if (!checked) {
+			seterror('please select the check box');
+			showError();
+		} else if (pickDrop && $.isEmptyObject(pickUpAddress)) {
+			seterror('please select the pick up address');
+			showError();
+		} else if (deliverDrop && $.isEmptyObject(deliverAddres)) {
+			seterror('please select the delivery address');
+			showError();
+		} else {
+			history.push('/checkout/thankyou');
+		}
 	};
 	return (
 		<section className="checkoutWrapper profileWrapper">
@@ -54,7 +78,12 @@ function Checkout() {
 							deliverAddres={deliverAddres}
 						/>
 					</div>
-					<PriceSummary pickUp={pickDrop} />
+
+					<PriceSummary
+						pickUp={pickDrop}
+						onsubmitHandler={onsubmitHandler}
+						error={error}
+					/>
 				</div>
 			</div>
 		</section>

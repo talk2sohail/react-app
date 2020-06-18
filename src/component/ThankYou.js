@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 function ThankYou() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 	return (
 		<section className="profileWrapper">
 			<div className="sectionWrapper">
@@ -8,7 +11,7 @@ function ThankYou() {
 					<div className="col-12">
 						<div className="thankuWrapper">
 							<img
-								src="assets/images/icons/completed.svg"
+								src="/assets/images/icons/completed.svg"
 								className="img-fluid"
 								alt=""
 							/>
