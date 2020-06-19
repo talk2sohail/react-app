@@ -37,19 +37,15 @@ exports.mobileData = [
 
 exports.issueData = [
 	{
-<<<<<<< HEAD
 		key: 0,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
-=======
 		issue: 'Broken Screen',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 		minPrice: 999,
 		maxPrice: 9999,
 	},
 	{
-<<<<<<< HEAD
 		key: 1,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
@@ -85,58 +81,44 @@ exports.issueData = [
 		maxPrice: 9999,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
-=======
 		issue: 'Battery issue',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 		minPrice: 100,
 		maxPrice: 1000,
 	},
 	{
-<<<<<<< HEAD
 		key: 2,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
-=======
 		issue: 'physical Damage',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 		minPrice: 199,
 		maxPrice: 1999,
 	},
 	{
-<<<<<<< HEAD
 		key: 3,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
-=======
 		issue: 'Cracked',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 		minPrice: 599,
 		maxPrice: 5999,
 	},
 	{
-<<<<<<< HEAD
 		key: 4,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
-=======
 		issue: 'Software issue',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 		minPrice: 299,
 		maxPrice: 1999,
 	},
 	{
-<<<<<<< HEAD
 		key: 5,
 		issue: "Broken Screen",
 		discription: "Lorem ipsum dolor, sit amet consectetur",
-=======
 		issue: 'Virus issue',
 		discription: 'Lorem ipsum dolor, sit amet consectetur',
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 		minPrice: 300,
 		maxPrice: 5000,
 	},

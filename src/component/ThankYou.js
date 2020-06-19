@@ -8,7 +8,7 @@ function ThankYou() {
 					<div className="col-12">
 						<div className="thankuWrapper">
 							<img
-								src="assets/images/icons/completed.svg"
+								src="/assets/images/icons/completed.svg"
 								className="img-fluid"
 								alt=""
 							/>

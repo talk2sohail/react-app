@@ -1,16 +1,8 @@
-<<<<<<< HEAD
-import React, { useEffect } from "react";
-import MyCart from "./MyCart";
-import PriceSummary from "./PriceSummary";
-import PickupAddress from "./PickupAddress";
-import DeliverAddress from "./DeliverAddress";
-=======
 import React, { useState, useEffect } from 'react';
 import MyCart from './MyCart';
 import PriceSummary from './PriceSummary';
 import PickupAddress from './PickupAddress';
 import DeliverAddress from './DeliverAddress';
->>>>>>> 0a288da8fd8487fdd48ddfd62aa6158682ae7f25
 function Checkout() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
