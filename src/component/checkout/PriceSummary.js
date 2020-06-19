@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-function PriceSummary({ pickUp }) {
+function PriceSummary({ pickUp, onsubmitHandler, error }) {
 	let myCart = localStorage.getItem('myCart');
 	myCart = JSON.parse(myCart);
-
+	const [checked, setchecked] = useState(false);
+	const onClickHandler = () => {
+		setchecked(!checked);
+	};
 	return (
 		<div className="col-12 col-lg-4">
 			<div className="priceSummary">
@@ -59,7 +62,13 @@ function PriceSummary({ pickUp }) {
 					)}
 
 					<div className="position-relative agreeTC">
-						<input type="checkbox" checked id="agree" name="" />
+						<input
+							type="checkbox"
+							checked={checked ? 'checked' : ''}
+							id="agree"
+							name=""
+							onClick={onClickHandler}
+						/>
 						<label htmlFor="agree">
 							<svg
 								className="tick"
@@ -76,12 +85,15 @@ function PriceSummary({ pickUp }) {
 						</label>
 					</div>
 				</div>
-				<Link
-					to="/checkout/thankyou"
-					className="d-block text-center btnBook"
-				>
-					BOOK NOW
-				</Link>
+				{error && <p style={{ color: 'red' }}>{error}</p>}
+				<div onClick={() => onsubmitHandler(checked)}>
+					<a
+						style={{ cursor: 'pointer' }}
+						className="d-block text-center btnBook"
+					>
+						BOOK NOW
+					</a>
+				</div>
 			</div>
 		</div>
 	);

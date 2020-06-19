@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CheckOutForm from './CheckOutForm';
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
@@ -49,12 +49,11 @@ function PickupAddress({
 							aria-labelledby="home-tab"
 						>
 							<AddAddress showFormHandler={showFormHandler} />
-							{!showForm && (
-								<UserAddress
-									AddressHandler={pickUpaddressHandler}
-									Address={pickUpAddress}
-								/>
-							)}
+							<UserAddress
+								AddressHandler={pickUpaddressHandler}
+								Address={pickUpAddress}
+							/>
+
 							{showForm && (
 								<CheckOutForm
 									checkOuthandler={checkOuthandler}

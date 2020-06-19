@@ -66,7 +66,7 @@ function RepairBrands(item) {
 		setIssuesName(obj);
 	};
 	console.log(issuesName);
-	const CkechoutHandler = () => {
+	const CheckOutHandler = () => {
 		let myCart = localStorage.getItem('myCart');
 		let issue = [];
 		console.log(issuesName);
@@ -159,7 +159,7 @@ function RepairBrands(item) {
 							msg={`Select Your issue in ${mobileName}`}
 							min={price[0]}
 							max={price[1]}
-							CkechoutHandler={CkechoutHandler}
+							CheckOutHandler={CheckOutHandler}
 						/>
 						<IssueSelection
 							issueHandler={issueHandler}

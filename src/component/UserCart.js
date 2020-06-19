@@ -1,10 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import EmptyCart from './checkout/EmptyCart';
 import MyCartUtil from './checkout/MyCartUtil';
 import { Link } from 'react-router-dom';
 function UserCart() {
-	let myCart = localStorage.getItem('myCart');
-	myCart = JSON.parse(myCart);
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+	let Cart = localStorage.getItem('myCart');
+	Cart = JSON.parse(Cart);
+	const [myCart, setmyCart] = useState(Cart);
+	const cartHandler = item => {
+		const filteredcart = myCart.filter(doc => doc !== item);
+		// while (filteredcart.length + 1 != myCart.length)
+		// 	filteredcart.push(item);
+		localStorage.removeItem('myCart');
+		localStorage.setItem('myCart', JSON.stringify(filteredcart));
+		setmyCart(filteredcart);
+		console.log(filteredcart);
+	};
 	return (
 		<section className="checkoutWrapper profileWrapper">
 			<div className="sectionWrapper">
@@ -29,7 +42,11 @@ function UserCart() {
 							<div className="userDetails">
 								<div className="orderBlock">
 									{myCart ? (
-										<MyCartUtil myCart={myCart} />
+										<MyCartUtil
+											myCart={myCart}
+											cartHandler={cartHandler}
+											callingFromCart={true}
+										/>
 									) : (
 										<EmptyCart />
 									)}
