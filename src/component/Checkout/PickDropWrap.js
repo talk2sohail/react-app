@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function PickDropWrap({
 	option1,
@@ -10,12 +10,17 @@ function PickDropWrap({
 	lihref2,
 	control1,
 	control2,
-	dropHandler,
-	pickUpHandler,
+	pickDropHanlder,
 }) {
+	const pickupHandler = () => {
+		pickDropHanlder(true);
+	};
+	const drophandler = () => {
+		pickDropHanlder(false);
+	};
 	return (
 		<ul className="nav nav-tabs mb-4 pb-2" id={id} role="tablist">
-			<li className="nav-item" onClick={pickUpHandler}>
+			<li className="nav-item" onClick={pickupHandler}>
 				<a
 					className="nav-link active"
 					id={liId1}
@@ -28,7 +33,7 @@ function PickDropWrap({
 					{option1}
 				</a>
 			</li>
-			<li className="nav-item ml-3" onClick={dropHandler}>
+			<li className="nav-item ml-3" onClick={drophandler}>
 				<a
 					className="nav-link"
 					id={liId2}

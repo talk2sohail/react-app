@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 function MyCartUtil({ myCart, cartHandler, callingFromCart = false }) {
 	return myCart.map((item, index) => (
 		<div

@@ -1,10 +1,7 @@
 import React from 'react';
 import MyCartUtil from './MyCartUtil';
 
-function MyCart() {
-	let myCart = localStorage.getItem('myCart');
-	myCart = JSON.parse(myCart);
-
+function MyCart({ mycart }) {
 	return (
 		<div className="userWrapper">
 			<div className="userHeader">
@@ -12,7 +9,7 @@ function MyCart() {
 			</div>
 			<div className="userDetails">
 				<div className="orderBlock">
-					<MyCartUtil myCart={myCart} />
+					<MyCartUtil myCart={mycart} />
 				</div>
 			</div>
 		</div>

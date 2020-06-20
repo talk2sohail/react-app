@@ -6,7 +6,11 @@ import DeliverAddress from './DeliverAddress';
 import { useHistory } from 'react-router-dom';
 import $ from 'jquery';
 function Checkout() {
+	const [mycart, setMycart] = useState([]);
 	useEffect(() => {
+		let myCart = localStorage.getItem('myCart');
+		myCart = JSON.parse(myCart);
+		setMycart(myCart);
 		window.scrollTo(0, 0);
 	}, []);
 	let history = useHistory();
@@ -14,21 +18,10 @@ function Checkout() {
 	const [pickUpAddress, setPickUpAddress] = useState({});
 	const [deliverAddres, setDeliverAddress] = useState({});
 	const [deliverDrop, setDeliverDrop] = useState(true);
-	const pickUpHandler = () => {
-		setPickDrop(true);
-	};
-	const dropHandler = () => {
-		setPickDrop(false);
-	};
-	const deliverPickHandler = () => {
-		setDeliverDrop(true);
-	};
-	const deliverDropHandler = () => {
-		setDeliverDrop(false);
-	};
+	const [error, setError] = useState('');
 
 	const pickUpaddressHandler = (item, index) => {
-		console.log(item);
+		// console.log(item);
 		let obj = {};
 		obj[index] = item;
 		setPickUpAddress(obj);
@@ -40,42 +33,45 @@ function Checkout() {
 	};
 	const showError = () => {
 		setTimeout(() => {
-			seterror('');
+			setError('');
 		}, 3000);
 	};
-	const [error, seterror] = useState('');
+	const pickDropHanlder = value => {
+		setPickDrop(value);
+	};
+	const deliverPickHanlder = value => {
+		setDeliverDrop(value);
+	};
 	const onsubmitHandler = checked => {
-		// console.log(pickDrop, pickUpAddress);
 		if (!checked) {
-			seterror('please select the check box');
+			setError('please select the check box');
 			showError();
 		} else if (pickDrop && $.isEmptyObject(pickUpAddress)) {
-			seterror('please select the pick up address');
+			setError('please select the pick up address');
 			showError();
 		} else if (deliverDrop && $.isEmptyObject(deliverAddres)) {
-			seterror('please select the delivery address');
+			setError('please select the delivery address');
 			showError();
 		} else {
 			history.push('/checkout/thankyou');
 		}
 	};
+
 	return (
 		<section className="checkoutWrapper profileWrapper">
 			<div className="sectionWrapper">
 				<div className="row justify-content-center">
 					<div className="col-12 col-lg-8">
-						<MyCart />
+						<MyCart mycart={mycart} />
 						<PickupAddress
-							pickUpHandler={pickUpHandler}
-							dropHandler={dropHandler}
 							pickUpaddressHandler={pickUpaddressHandler}
 							pickUpAddress={pickUpAddress}
+							pickDropHanlder={pickDropHanlder}
 						/>
 						<DeliverAddress
-							deliverPickHandler={deliverPickHandler}
-							deliverDropHandler={deliverDropHandler}
 							deliveraddressHandler={deliveraddressHandler}
 							deliverAddres={deliverAddres}
+							deliverPickHanlder={deliverPickHanlder}
 						/>
 					</div>
 

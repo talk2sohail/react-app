@@ -5,7 +5,7 @@ function Service({ item }) {
 	const { img, repairName } = item;
 	return (
 		<Tilt className="Tilt" options={{ max: 25, scale: 1, reverse: true }}>
-			<Link to="javascript:void(0)" className="text-center">
+			<Link to="#" className="text-center">
 				<img
 					key={item.key}
 					src={`assets/images/background/${img}`}

@@ -3,13 +3,12 @@ import CheckOutForm from './CheckOutForm';
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
 import AddAddress from './AddAddress';
-import UserAddress from '../UserAddress';
 import { AddressHook, FormShowHook } from '../util/CheckoutFormUtil';
-function DeliverAddress({
-	deliveraddressHandler,
-	deliverPickHandler,
-	deliverDropHandler,
-	deliverAddres,
+import UserAddress from '../UserAddress';
+function PickupAddress({
+	pickUpaddressHandler,
+	pickUpAddress,
+	pickDropHanlder,
 }) {
 	const [userInfo, checkOuthandler, checkOutSubmithandler] = AddressHook({
 		fName: '',
@@ -24,35 +23,33 @@ function DeliverAddress({
 	return (
 		<div className="userWrapper mt-4">
 			<div className="userHeader">
-				<h2>Deliver at home or pickup from shop</h2>
+				<h2>Pickup at home or Drop at shop</h2>
 			</div>
 			<div className="userDetails addressChange">
 				<div className="pickdrropWrap">
 					<PickDropWrap
-						option1="Home Delivery"
-						option2="Pick from Shop"
-						id="myTabTwo"
-						liId1="homedelivery-tab"
-						lihref1="#homedelivery"
-						control1="homedelivery"
-						liId2="pickshop-tab"
-						lihref2="#pickshop"
-						ontrol2="pickshop"
-						pickUpHandler={deliverPickHandler}
-						dropHandler={deliverDropHandler}
+						option1="Pickup"
+						option2="Drop"
+						id="myTab"
+						liId1="home-tab"
+						lihref1="#home"
+						control1="home"
+						liId2="profile-tab"
+						lihref2="#profile"
+						control2="profile"
+						pickDropHanlder={pickDropHanlder}
 					/>
-					<div className="tab-content" id="myTabContentTwo">
+					<div className="tab-content" id="myTabContent">
 						<div
 							className="tab-pane fade show active"
-							id="homedelivery"
+							id="home"
 							role="tabpanel"
-							aria-labelledby="homedelivery-tab"
+							aria-labelledby="home-tab"
 						>
 							<AddAddress showFormHandler={showFormHandler} />
-
 							<UserAddress
-								AddressHandler={deliveraddressHandler}
-								Address={deliverAddres}
+								AddressHandler={pickUpaddressHandler}
+								Address={pickUpAddress}
 							/>
 
 							{showForm && (
@@ -68,9 +65,9 @@ function DeliverAddress({
 						</div>
 
 						<ShopAddress
-							id="pickshop"
+							id="profile"
 							role="tabpanel"
-							label="pickshop-tab"
+							label="profile-tab"
 						/>
 					</div>
 				</div>
@@ -79,4 +76,4 @@ function DeliverAddress({
 	);
 }
 
-export default DeliverAddress;
+export default PickupAddress;

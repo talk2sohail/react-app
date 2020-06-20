@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { brandsData } from '../../data/HomeData';
-import ImageUtil from '../../component/util/ImageUtil';
 function Brands() {
 	const [brands, setBrands] = useState(brandsData);
 	return (
@@ -22,7 +21,7 @@ function Brands() {
 							<ul>
 								{brands.map(item => (
 									<li key={item.key}>
-										<ImageUtil
+										<img
 											src={`assets/images/brandLogos/${item.img}`}
 											alt={item.brandName}
 										/>

@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 import RepairBanner from './RepairBanner';
-import Collborate from '../repairAndCollaborate/Collaborate';
+import Collborate from '../RepairAndCollaborate/Collaborate';
 import RepairLogos from './ReapirLogo';
 import RepairBrand from './RepairBrands';
-import Services from '../service/Services';
+import Services from '../Service/Services';
 function Repair() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	});
 	return (
-		<div>
+		<>
 			<RepairBanner />
 			<RepairLogos />
 			<RepairBrand />
 			<Services />
 			<Collborate />
-		</div>
+		</>
 	);
 }
 

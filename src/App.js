@@ -1,12 +1,12 @@
 import React from 'react';
 import Home from './component/Home';
-import TopBar from './component/navbar/TopBar';
-import NavBar from './component/navbar/NavBar';
-import Footer from './component/footer/Footer';
-import About from './component/about/About';
+import TopBar from './component/NavBar/TopBar';
+import NavBar from './component/NavBar/NavBar';
+import Footer from './component/Footer/Footer';
+import About from './component/About/About';
 import Repair from './component/Repair/Repair';
 import Page404 from './component/Error404';
-import Checkout from './component/checkout/Checkout';
+import Checkout from './component/Checkout/Checkout';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Faq from './component/FAQ/Faq';
 import ThankYou from './component/ThankYou';

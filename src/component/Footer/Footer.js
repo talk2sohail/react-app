@@ -1,6 +1,5 @@
 import React from 'react';
 import { footerData } from '../../data/HomeData';
-import ImageUtil from '../util/ImageUtil';
 import { Link } from 'react-router-dom';
 function Footer() {
 	return (
@@ -87,7 +86,7 @@ function Footer() {
 										className="d-block socialIcons"
 										key={item.key}
 									>
-										<ImageUtil
+										<img
 											src={`assets/images/icons/${item.img}`}
 											width="16"
 										/>

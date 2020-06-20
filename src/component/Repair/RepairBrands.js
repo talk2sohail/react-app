@@ -1,11 +1,11 @@
-import React, { useState, Fragment } from 'react';
-import BrandSearch from './SearchBrand';
-import RepairUtil from './BrandsSelection';
-import MobleSelection from '../MobleSelection';
-import IssueSelection from '../IssuesSelection';
+import React, { useState } from 'react';
+import SearchBrands from './SearchBrand';
+import BrandsSelection from './BrandsSelection';
+import MobleSelection from './MobleSelection';
+import IssueSelection from './IssuesSelection';
 import Checkout from './RepairCheckout';
 
-function RepairBrands(item) {
+function RepairBrands() {
 	const [selectBrand, setSelectBrand] = useState(true);
 	const [brandName, setBrandName] = useState('');
 	const [selectMobile, setSelectMobile] = useState(false);
@@ -47,17 +47,13 @@ function RepairBrands(item) {
 			setSelectIssue(true);
 		}
 	};
-	const priceHandle = (minPrice, maxPrice) => {
-		setPrice([price[0] + minPrice, price[1] + maxPrice]);
-	};
 	const issueHandler = (index, issue, minPrice, maxPrice) => {
 		let obj = { ...issuesName };
 		if (obj[index]) {
-			priceHandle(-minPrice, -maxPrice);
+			setPrice([price[0] - minPrice, price[1] - maxPrice]);
 			obj[index] = '';
 		} else {
-			priceHandle(minPrice, maxPrice);
-
+			setPrice([price[0] + minPrice, price[1] + maxPrice]);
 			obj[index] = {
 				issue: issue,
 				price: [minPrice, maxPrice],
@@ -65,14 +61,11 @@ function RepairBrands(item) {
 		}
 		setIssuesName(obj);
 	};
-	console.log(issuesName);
 	const CheckOutHandler = () => {
 		let myCart = localStorage.getItem('myCart');
 		let issue = [];
-		console.log(issuesName);
 		for (let [key, value] of Object.entries(issuesName)) {
 			issue.push(value);
-			// console.log(key, value);
 		}
 		let summary = {
 			brand: brandName,
@@ -85,11 +78,9 @@ function RepairBrands(item) {
 		} else {
 			localStorage.removeItem('myCart');
 			myCart = JSON.parse(myCart);
-			console.log('a', myCart);
 			myCart.push(summary);
 			localStorage.setItem('myCart', JSON.stringify(myCart));
 		}
-		console.log(summary);
 	};
 	return (
 		<section className="repairSelection">
@@ -140,21 +131,23 @@ function RepairBrands(item) {
 				</div>
 
 				{selectBrand && (
-					<Fragment>
-						<BrandSearch msg="Select Your Brand" />
-						<RepairUtil onClickBrandHandler={onClickBrandHandler} />
-					</Fragment>
+					<>
+						<SearchBrands msg="Select Your Brand" />
+						<BrandsSelection
+							onClickBrandHandler={onClickBrandHandler}
+						/>
+					</>
 				)}
 				{selectMobile && (
-					<Fragment>
-						<BrandSearch msg={`Select Your ${brandName} Device`} />
+					<>
+						<SearchBrands msg={`Select Your ${brandName} Device`} />
 						<MobleSelection
 							onClickMobileHandler={onClickMobileHandler}
 						/>
-					</Fragment>
+					</>
 				)}
 				{selectIssue && (
-					<Fragment>
+					<>
 						<Checkout
 							msg={`Select Your issue in ${mobileName}`}
 							min={price[0]}
@@ -165,7 +158,7 @@ function RepairBrands(item) {
 							issueHandler={issueHandler}
 							state={issuesName}
 						/>
-					</Fragment>
+					</>
 				)}
 			</div>
 		</section>

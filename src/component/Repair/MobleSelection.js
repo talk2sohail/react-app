@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { mobileData } from '../data/RepairData';
+import { mobileData } from '../../data/RepairData';
 function MobleSelection({ onClickMobileHandler }) {
 	const [mobiles, setMobiles] = useState(mobileData);
 	useEffect(() => {

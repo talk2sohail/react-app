@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { issueData } from '../data/RepairData';
+import { issueData } from '../../data/RepairData';
 function IssuesSelection({ issueHandler, state }) {
 	const [issues, setIssues] = useState(issueData);
 	useEffect(() => {
@@ -38,7 +38,7 @@ function IssuesSelection({ issueHandler, state }) {
 						>
 							<span className="">+ Add</span>
 							<span
-								className={state[index] != {} ? '' : 'd-none'}
+								className={state[index] !== {} ? '' : 'd-none'}
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
