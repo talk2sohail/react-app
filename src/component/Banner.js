@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { bannerData } from '../data/HomeData';
-import ImageUtil from './util/ImageUtil';
 function Banner() {
 	const [banner, setBanner] = useState(bannerData);
 	useEffect(() => {
@@ -19,10 +18,7 @@ function Banner() {
 			<div className="bannerSingle">
 				{banner.map(item => (
 					<div className="bannerItem" key={item.key}>
-						<ImageUtil
-							src={`assets/images/banner/${item.img}`}
-							alt=""
-						/>
+						<img src={`assets/images/banner/${item.img}`} alt="" />
 					</div>
 				))}
 			</div>

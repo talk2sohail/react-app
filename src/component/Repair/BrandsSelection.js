@@ -5,7 +5,7 @@ function BrandsSelection({ onClickBrandHandler }) {
 
 	return (
 		<div className="row no-gutters justify-content-start align-items-center selectOption">
-			{brandsData.map(item => (
+			{repairBrands.map(item => (
 				<div
 					key={item.key}
 					className="col-6 col-md-4 col-lg-2"

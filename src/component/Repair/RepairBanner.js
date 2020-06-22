@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 function RepairBanner() {
 	return (
-		<Fragment>
+		<>
 			<section className="repairBannerWrapper">
 				<div className="sectionWrapper">
 					<div className="row align-items-center justify-content-between no-gutters">
@@ -64,7 +64,7 @@ function RepairBanner() {
 					d="M0,160L80,176C160,192,320,224,480,218.7C640,213,800,171,960,165.3C1120,160,1280,192,1360,208L1440,224L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
 				></path>
 			</svg>
-		</Fragment>
+		</>
 	);
 }
 

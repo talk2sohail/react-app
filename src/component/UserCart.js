@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import EmptyCart from './checkout/EmptyCart';
-import MyCartUtil from './checkout/MyCartUtil';
+import EmptyCart from './Checkout/EmptyCart';
+import MyCartUtil from './Checkout/MyCartUtil';
 import { Link } from 'react-router-dom';
 function UserCart() {
 	useEffect(() => {
@@ -11,8 +11,6 @@ function UserCart() {
 	const [myCart, setmyCart] = useState(Cart);
 	const cartHandler = item => {
 		const filteredcart = myCart.filter(doc => doc !== item);
-		// while (filteredcart.length + 1 != myCart.length)
-		// 	filteredcart.push(item);
 		localStorage.removeItem('myCart');
 		localStorage.setItem('myCart', JSON.stringify(filteredcart));
 		setmyCart(filteredcart);

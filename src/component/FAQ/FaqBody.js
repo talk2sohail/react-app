@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import $ from 'jquery';
 import IconUtil from '../util/IconUtil';
 import { faqBody } from '../../data/FaqData';
 function FaqBody() {
 	const [state, setState] = useState(faqBody);
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		window.$('.slider-for').slick({
 			slidesToShow: 1,
 			slidesToScroll: 1,
