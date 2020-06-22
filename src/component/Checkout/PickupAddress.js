@@ -10,7 +10,12 @@ function PickupAddress({
 	pickUpAddress,
 	pickDropHanlder,
 }) {
-	const [userInfo, checkOuthandler, checkOutSubmithandler] = AddressHook({
+	const [
+		userInfo,
+		checkOuthandler,
+		checkOutSubmithandler,
+		stateClear,
+	] = AddressHook({
 		fName: '',
 		lName: '',
 		locality: '',
@@ -60,6 +65,7 @@ function PickupAddress({
 										checkOutSubmithandler
 									}
 									showFormHandler={showFormHandler}
+									stateClear={stateClear}
 								/>
 							)}
 						</div>

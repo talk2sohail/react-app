@@ -6,7 +6,7 @@ import Procedure from './Procedure/Procedures';
 import Service from './Service/Services';
 import Brands from './Brand/Brands';
 import Collaborate from './RepairAndCollaborate/Collaborate';
-import Modal from './Modal';
+
 function Home() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -19,7 +19,6 @@ function Home() {
 			<Service />
 			<Brands />
 			<Collaborate />
-			<Modal />
 		</Fragment>
 	);
 }

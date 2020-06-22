@@ -10,7 +10,12 @@ function DeliverAddress({
 	deliverAddres,
 	deliverPickHanlder,
 }) {
-	const [userInfo, checkOuthandler, checkOutSubmithandler] = AddressHook({
+	const [
+		userInfo,
+		checkOuthandler,
+		checkOutSubmithandler,
+		stateClear,
+	] = AddressHook({
 		fName: '',
 		lName: '',
 		locality: '',
@@ -61,6 +66,7 @@ function DeliverAddress({
 										checkOutSubmithandler
 									}
 									showFormHandler={showFormHandler}
+									stateClear={stateClear}
 								/>
 							)}
 						</div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-function PriceSummary({ pickUp, onsubmitHandler, error }) {
+function PriceSummary({ pickUp, onsubmitHandler }) {
 	let myCart = localStorage.getItem('myCart');
 	myCart = JSON.parse(myCart);
 	const [checked, setchecked] = useState(false);
@@ -67,7 +66,7 @@ function PriceSummary({ pickUp, onsubmitHandler, error }) {
 							checked={checked ? 'checked' : ''}
 							id="agree"
 							name=""
-							onClick={onClickHandler}
+							onChange={onClickHandler}
 						/>
 						<label htmlFor="agree">
 							<svg
@@ -85,7 +84,6 @@ function PriceSummary({ pickUp, onsubmitHandler, error }) {
 						</label>
 					</div>
 				</div>
-				{error && <p style={{ color: 'red' }}>{error}</p>}
 				<div onClick={() => onsubmitHandler(checked)}>
 					<a
 						style={{ cursor: 'pointer' }}

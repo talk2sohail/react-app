@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import $ from 'jquery';
 function MenuMobile({ handleMobile }) {
 	return (
 		<div className="mobileMenuWrapperOuter d-lg-none">
@@ -40,7 +39,10 @@ function MenuMobile({ handleMobile }) {
 						</a>
 					</div>
 				</div>
-				<nav className="mobileMenu d-flex flex-column">
+				<nav
+					className="mobileMenu d-flex flex-column"
+					onClick={handleMobile}
+				>
 					<div className="borders">
 						<Link to="/" className="mobileMenuLink">
 							Home
@@ -62,15 +64,15 @@ function MenuMobile({ handleMobile }) {
 						</a>
 					</div>
 					<div className="borders">
-						<a href="profile.html" className="mobileMenuLink">
+						<Link to="/profile" className="mobileMenuLink">
 							Profile
-						</a>
-						<a href="appointments.html" className="mobileMenuLink">
+						</Link>
+						<a href="/appointments" className="mobileMenuLink">
 							Repair Appointments
 						</a>
-						<a href="address.html" className="mobileMenuLink">
+						<Link to="/address" className="mobileMenuLink">
 							Saved Address
-						</a>
+						</Link>
 					</div>
 					<div className="borders">
 						<a href="javascript:void(0)" className="mobileMenuLink">

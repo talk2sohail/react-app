@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { Error } from '../../Contexts/ErrorContext/ErrorContext';
 function RepairCheckout({ msg, min, max, CheckOutHandler }) {
-	const [error, setError] = useState(false);
 	let history = useHistory();
 	const checkoutHandler = () => {
 		if (!max) {
-			setError(true);
-			setTimeout(() => {
-				setError(false);
-			}, 2000);
+			Error('info', 'It seems you forget to select an issue');
 		} else {
 			CheckOutHandler();
 			history.push('/checkout');
@@ -24,9 +21,6 @@ function RepairCheckout({ msg, min, max, CheckOutHandler }) {
 				className="col-12 col-md-6 text-right buttons"
 				onClick={checkoutHandler}
 			>
-				{error && (
-					<p style={{ color: 'red' }}>please select any issue</p>
-				)}
 				<a style={{ cursor: 'pointer' }}>
 					Checkout Rs({min}-{max})
 				</a>

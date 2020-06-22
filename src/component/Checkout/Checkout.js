@@ -4,6 +4,7 @@ import PriceSummary from './PriceSummary';
 import PickupAddress from './PickupAddress';
 import DeliverAddress from './DeliverAddress';
 import { useHistory } from 'react-router-dom';
+import { Error } from '../../Contexts/ErrorContext/ErrorContext';
 import $ from 'jquery';
 function Checkout() {
 	const [mycart, setMycart] = useState([]);
@@ -18,7 +19,6 @@ function Checkout() {
 	const [pickUpAddress, setPickUpAddress] = useState({});
 	const [deliverAddres, setDeliverAddress] = useState({});
 	const [deliverDrop, setDeliverDrop] = useState(true);
-	const [error, setError] = useState('');
 
 	const pickUpaddressHandler = (item, index) => {
 		// console.log(item);
@@ -31,11 +31,6 @@ function Checkout() {
 		obj[index] = item;
 		setDeliverAddress(obj);
 	};
-	const showError = () => {
-		setTimeout(() => {
-			setError('');
-		}, 3000);
-	};
 	const pickDropHanlder = value => {
 		setPickDrop(value);
 	};
@@ -44,14 +39,11 @@ function Checkout() {
 	};
 	const onsubmitHandler = checked => {
 		if (!checked) {
-			setError('please select the check box');
-			showError();
+			Error('info', 'please select the check box');
 		} else if (pickDrop && $.isEmptyObject(pickUpAddress)) {
-			setError('please select the pick up address');
-			showError();
+			Error('info', 'please select the pick up address');
 		} else if (deliverDrop && $.isEmptyObject(deliverAddres)) {
-			setError('please select the delivery address');
-			showError();
+			Error('info', 'please select the delivery address');
 		} else {
 			history.push('/checkout/thankyou');
 		}
@@ -78,7 +70,6 @@ function Checkout() {
 					<PriceSummary
 						pickUp={pickDrop}
 						onsubmitHandler={onsubmitHandler}
-						error={error}
 					/>
 				</div>
 			</div>

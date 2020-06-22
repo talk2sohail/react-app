@@ -1,19 +1,16 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect } from 'react';
 function CheckOutForm({
 	checkOuthandler,
 	userInfo,
 	checkOutSubmithandler,
 	showFormHandler,
+	stateClear,
 }) {
-	const {
-		fName,
-		lName,
-		locality,
-		address,
-		pincode,
-		phoneNumber,
-		email,
-	} = userInfo;
+	useEffect(() => {
+		return () => {
+			stateClear(init);
+		};
+	}, []);
 	const init = {
 		fName: '',
 		lName: '',
@@ -23,27 +20,21 @@ function CheckOutForm({
 		phoneNumber: '',
 		email: '',
 	};
-	const [error, setError] = useState('');
-	// console.log(error);
+	const {
+		fName,
+		lName,
+		locality,
+		address,
+		pincode,
+		phoneNumber,
+		email,
+	} = userInfo;
 	const util = e => {
 		const err = checkOutSubmithandler(e, init);
 		if (!err) showFormHandler();
-		else {
-			setError(err);
-		}
 	};
 	return (
 		<Fragment>
-			{error && (
-				<p
-					style={{
-						backgroundColor: 'red',
-						height: '35px',
-					}}
-				>
-					{error}
-				</p>
-			)}
 			<form
 				className="mt-4"
 				onSubmit={e => {
@@ -57,8 +48,8 @@ function CheckOutForm({
 							className="editProfileDetails"
 							value={fName}
 							name="fName"
-							placeholder="First Name"
 							onChange={checkOuthandler}
+							placeholder="First Name"
 						/>
 					</div>
 					<div className="col-lg-6">

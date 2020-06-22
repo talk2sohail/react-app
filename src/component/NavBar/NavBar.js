@@ -1,12 +1,20 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import WhatsApp from '../../component/WhatsApp.js';
 import Menu from './Menu';
 import { Link } from 'react-router-dom';
 import { menuName } from '../../data/HomeData';
 import MenuMobile from '../MenuMobile';
+import $ from 'jquery';
 function NavBar() {
 	const [menu, setMenu] = useState(menuName);
 	const [hamBurger, sethamBurger] = useState(false);
+	useEffect(() => {
+		$(window).on('scroll load', function () {
+			$(window).scrollTop() > $('.siteHeader').outerHeight()
+				? $('.siteHeader').addClass('sticky')
+				: $('.siteHeader').removeClass('sticky');
+		});
+	}, []);
 	const handleMobile = () => {
 		if (!hamBurger) {
 			window.$('.mobileMenuWrapperOuter').addClass('on');
@@ -25,7 +33,7 @@ function NavBar() {
 					<div className="row align-items-center justify-content-between no-gutters">
 						<div className="col-4 d-block d-lg-none">
 							<a
-								href="javascript:void(0)"
+								style={{ cursor: 'pointer' }}
 								className="mobileMenuTrigger"
 								onClick={handleMobile}
 							>
@@ -61,36 +69,37 @@ function NavBar() {
 									</Link>
 								</div>
 								<div className="iconsItem d-inline-block d-md-block d-lg-none">
-									<Link to="repair.html">
+									<Link to="/repair">
 										<i className="glyph-icon flaticon-settings"></i>
 									</Link>
 								</div>
 								<div className="iconsItem d-lg-inline-block d-md-block">
 									<Link
-										to="javascript:void(0)"
-										data-toggle="modal"
-										data-target="#loginModalCenter"
-										className="logInBtn"
+										to="/profile"
+										// style={{ cursor: 'pointer' }}
+										// data-toggle="modal"
+										// data-target="#loginModalCenter"
+										// className="logInBtn"
 									>
 										<i className="glyph-icon flaticon-user"></i>
 									</Link>
 									<ul className="subMenu">
 										<li>
-											<Link to="profile.html">
+											<Link to="/profile">
 												My Profile
 											</Link>
 										</li>
 
 										<li className="rule"></li>
 										<li>
-											<Link to="address.html">
+											<Link to="/address">
 												Saved Address
 											</Link>
 										</li>
 
 										<li className="rule"></li>
 										<li>
-											<Link to="repair.html">
+											<Link to="/appointments">
 												Repair Appointments
 											</Link>
 										</li>
@@ -98,9 +107,7 @@ function NavBar() {
 										<li className="rule"></li>
 
 										<li>
-											<Link to="javascript:void(0)">
-												Log Out
-											</Link>
+											<Link to="/">Log Out</Link>
 										</li>
 									</ul>
 								</div>
