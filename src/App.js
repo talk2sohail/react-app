@@ -17,45 +17,64 @@ import Appointments from './component/User/Appointments/Appointments';
 import Modal from './component/Modal';
 import EditProfile from './component/User/Profile/EditProfile';
 import UserContextProvider from './Contexts/UserContext/UserContext';
+import AddressContextProvider from './Contexts/AddressContext/AddressContext';
+import AddAddress from './component/User/Address/AddAddress';
+import EditAddress from './component/User/Address/EditAddress';
 
 function App() {
 	return (
-		<UserContextProvider>
-			<Router>
-				<div id="site-wrapper">
-					<TopBar />
-					<NavBar />
-					<Switch>
-						<Route path="/" component={Home} exact />
-						<Route path="/faq" component={Faq} exact />
-						<Route path="/about" component={About} exact />
-						<Route path="/repair" component={Repair} exact />
-						<Route path="/checkout" component={Checkout} exact />
-						<Route path="/mycart" component={UserCart} exact />
-						<Route
-							path="/checkout/thankyou"
-							component={ThankYou}
-							exact
-						/>
-						<Route path="/profile" exact component={Profile} />
-						<Route path="/address" exact component={Address} />
-						<Route
-							path="/appointments"
-							exact
-							component={Appointments}
-						/>
-						<Route
-							path="/editprofile"
-							exact
-							component={EditProfile}
-						/>
-						<Route component={Page404} />
-					</Switch>
-					<Modal />
-					<Footer />
-				</div>
-			</Router>
-		</UserContextProvider>
+		<AddressContextProvider>
+			<UserContextProvider>
+				<Router>
+					<div id="site-wrapper">
+						<TopBar />
+						<NavBar />
+						<Switch>
+							<Route path="/" component={Home} exact />
+							<Route path="/faq" component={Faq} exact />
+							<Route path="/about" component={About} exact />
+							<Route path="/repair" component={Repair} exact />
+							<Route
+								path="/checkout"
+								component={Checkout}
+								exact
+							/>
+							<Route path="/mycart" component={UserCart} exact />
+							<Route
+								path="/checkout/thankyou"
+								component={ThankYou}
+								exact
+							/>
+							<Route path="/profile" exact component={Profile} />
+							<Route
+								path="/addaddress"
+								exact
+								component={AddAddress}
+							/>
+							<Route
+								path="/editaddress"
+								exact
+								component={EditAddress}
+							/>
+							<Route path="/address" exact component={Address} />
+							<Route
+								path="/appointments"
+								exact
+								component={Appointments}
+							/>
+							<Route
+								path="/editprofile"
+								exact
+								component={EditProfile}
+							/>
+							<Route component={Page404} />
+						</Switch>
+						<Modal />
+						<Footer />
+					</div>
+				</Router>
+			</UserContextProvider>
+		</AddressContextProvider>
 	);
 }
 

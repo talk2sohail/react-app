@@ -1,30 +1,31 @@
 import React from 'react';
-import CheckOutForm from './CheckOutForm';
+
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
 import AddAddress from './AddAddress';
-import { AddressHook, FormShowHook } from '../util/CheckoutFormUtil';
+import { FormShowHook } from '../Address/AddEditHook';
 import UserAddress from '../UserAddress';
+import AddEditAddressForm from '../Address/AddEditAddressForm';
 function PickupAddress({
 	pickUpaddressHandler,
 	pickUpAddress,
 	pickDropHanlder,
 }) {
-	const [
-		userInfo,
-		checkOuthandler,
-		checkOutSubmithandler,
-		stateClear,
-	] = AddressHook({
+	const init = {
 		fName: '',
 		lName: '',
 		locality: '',
 		address: '',
 		pincode: '',
+		state: '',
+		city: '',
 		phoneNumber: '',
 		email: '',
-	});
+	};
 	const [showForm, showFormHandler] = FormShowHook(false);
+	const offForm = () => {
+		showFormHandler();
+	};
 	return (
 		<div className="userWrapper mt-4">
 			<div className="userHeader">
@@ -58,14 +59,10 @@ function PickupAddress({
 							/>
 
 							{showForm && (
-								<CheckOutForm
-									checkOuthandler={checkOuthandler}
-									userInfo={userInfo}
-									checkOutSubmithandler={
-										checkOutSubmithandler
-									}
-									showFormHandler={showFormHandler}
-									stateClear={stateClear}
+								<AddEditAddressForm
+									init={init}
+									offForm={offForm}
+									process="Add Address"
 								/>
 							)}
 						</div>

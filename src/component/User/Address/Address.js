@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import User from '../User';
-
+import AddAddress from '../../Checkout/AddAddress';
+import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { AddressContext } from '../../../Contexts/AddressContext/AddressContext';
 function Address() {
+	let history = useHistory();
+	const { address, deleteAddressHanlder, editAddressHandler } = useContext(
+		AddressContext
+	);
+
+	const editaddressHandler = item => {
+		editAddressHandler(item);
+		history.push('/editaddress');
+	};
 	return (
 		<section className="profileWrapper">
 			<div className="sectionWrapper">
@@ -14,45 +26,54 @@ function Address() {
 								{/* <!-- <a href="javascript:void(0)">Edit Info</a> --> */}
 							</div>
 							<div className="userDetails">
-								<a
-									className="addAddress d-block gradientText"
-									href="addaddress.html"
-								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="18"
-										height="18"
-										viewBox="0 0 18 18"
-										fill="#56ccf2"
-									>
-										<path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-									</svg>
-									ADD NEW ADDRESS
-								</a>
-								<div className="savedAddress">
-									<h3>
-										Md Javed Akhtar <span>9831983198</span>
-									</h3>
-									<p>
-										10, Park Street, Kolkata-700 016. Park
-										Street Police Station
-									</p>
-									<p>Kolkata, West Bengal - 700016</p>
-									<div className="d-flex">
-										<a
-											href="javascript:void(0)"
-											className="gradientText"
+								<Link to="/addaddress">
+									<AddAddress />
+								</Link>
+								{address &&
+									address.map((item, index) => (
+										<div
+											className="savedAddress"
+											key={index}
 										>
-											Edit
-										</a>
-										<a
-											href="javascript:void(0)"
-											className="delete"
-										>
-											Delete
-										</a>
-									</div>
-								</div>
+											<h3>
+												{item.fName} {item.lName}{' '}
+												<span>{item.phoneNumber}</span>
+											</h3>
+											<p>
+												{item.address}. {item.locality}
+											</p>
+											<p>
+												{item.city}, {item.state} -{' '}
+												{item.pincode}
+											</p>
+											<div className="d-flex">
+												<a
+													style={{
+														cursor: 'pointer',
+													}}
+													onClick={() =>
+														editaddressHandler(item)
+													}
+													className="gradientText"
+												>
+													Edit
+												</a>
+												<a
+													style={{
+														cursor: 'pointer',
+													}}
+													className="delete"
+													onClick={() =>
+														deleteAddressHanlder(
+															item
+														)
+													}
+												>
+													Delete
+												</a>
+											</div>
+										</div>
+									))}
 							</div>
 						</div>
 					</div>

@@ -14,6 +14,7 @@ const UserContextProvider = props => {
 		init = tempUser;
 		setUser(tempUser);
 	};
+
 	return (
 		<UserContext.Provider value={{ user, SubmitHandler }}>
 			{props.children}
