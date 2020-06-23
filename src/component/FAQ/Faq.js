@@ -1,17 +1,17 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import FaqBanner from './FaqBanner';
 import FaqBody from './FaqBody';
-import Collaborate from '../repairAndCollaborate/Collaborate';
+import Collaborate from '../RepairAndCollaborate/Collaborate';
 function Faq() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	});
 	return (
-		<Fragment>
+		<>
 			<FaqBanner />
 			<FaqBody />
 			<Collaborate />
-		</Fragment>
+		</>
 	);
 }
 

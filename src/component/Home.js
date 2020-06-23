@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from 'react';
 
 import Banner from './Banner.js';
-import Help from './help/Help';
-import Procedure from './procedure/Procedures';
-import Service from './service/Services';
-import Brands from './brand/Brands';
-import Collaborate from './repairAndCollaborate/Collaborate';
-import Modal from './Modal';
+import Help from './Help/Help';
+import Procedure from './Procedure/Procedures';
+import Service from './Service/Services';
+import Brands from './Brand/Brands';
+import Collaborate from './RepairAndCollaborate/Collaborate';
+
 function Home() {
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -19,7 +19,6 @@ function Home() {
 			<Service />
 			<Brands />
 			<Collaborate />
-			<Modal />
 		</Fragment>
 	);
 }

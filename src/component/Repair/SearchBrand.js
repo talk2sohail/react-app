@@ -1,10 +1,10 @@
 import React from 'react';
 
-function SearchBrand() {
+function SearchBrand({ msg }) {
 	return (
-		<div className="row no-gutters justify-content-start align-items-center selectOption">
+		<div className="row no-gutters justify-content-start align-items-center selectOption mobileSelect">
 			<div className="col-12 col-md-6">
-				<h2>Select Your Mobile Brand</h2>
+				<h2>{msg}</h2>
 			</div>
 			<div className="col-12 col-md-6 text-right mobileLeft">
 				<form action="#" className="searchBar">
