@@ -14,7 +14,6 @@ function UserCart() {
 		localStorage.removeItem('myCart');
 		localStorage.setItem('myCart', JSON.stringify(filteredcart));
 		setmyCart(filteredcart);
-		console.log(filteredcart);
 	};
 	return (
 		<section className="checkoutWrapper profileWrapper">

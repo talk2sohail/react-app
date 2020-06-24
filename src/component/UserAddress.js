@@ -1,11 +1,10 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { AddressContext } from '../Contexts/AddressContext/AddressContext';
 function UserAddress({ AddressHandler, Address }) {
-	let userAddress = localStorage.getItem('address');
-	userAddress = JSON.parse(userAddress);
+	const { address } = useContext(AddressContext);
 	return (
-		userAddress &&
-		userAddress.map((item, index) => (
+		address &&
+		address.map((item, index) => (
 			<div
 				className={
 					Address[index] ? 'savedAddress selected' : 'savedAddress'
@@ -21,7 +20,9 @@ function UserAddress({ AddressHandler, Address }) {
 				<p>
 					{item.address}. {item.locality}
 				</p>
-				<p>Kolkata, West Bengal - {item.pincode}</p>
+				<p>
+					{item.city}, {item.state} - {item.pincode}
+				</p>
 			</div>
 		))
 	);

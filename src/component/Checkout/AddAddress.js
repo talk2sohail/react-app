@@ -4,7 +4,7 @@ function AddAddress({ showFormHandler }) {
 	return (
 		<a
 			className="addAddress d-block gradientText"
-			href="javasscript:void(0)"
+			style={{ cursor: 'pointer' }}
 			onClick={showFormHandler}
 		>
 			<svg
