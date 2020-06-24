@@ -16,7 +16,6 @@ function AddEditAddressForm({ init, offForm, process }) {
 			stateClear(init);
 		};
 	}, []);
-	console.log(userInfo, init);
 	const {
 		fName,
 		lName,

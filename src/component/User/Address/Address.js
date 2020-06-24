@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import User from '../User';
 import AddAddress from '../../Checkout/AddAddress';
 import { Link } from 'react-router-dom';
@@ -9,10 +9,8 @@ function Address() {
 	const { address, deleteAddressHanlder, editAddressHandler } = useContext(
 		AddressContext
 	);
-
 	const editaddressHandler = item => {
-		editAddressHandler(item);
-		history.push('/editaddress');
+		history.push(`/editaddress/${item}`);
 	};
 	return (
 		<section className="profileWrapper">
@@ -30,21 +28,26 @@ function Address() {
 									<AddAddress />
 								</Link>
 								{address &&
-									address.map((item, index) => (
+									address.map(item => (
 										<div
 											className="savedAddress"
-											key={index}
+											key={item.key}
 										>
 											<h3>
-												{item.fName} {item.lName}{' '}
-												<span>{item.phoneNumber}</span>
+												{item.address.fName}{' '}
+												{item.address.lName}{' '}
+												<span>
+													{item.address.phoneNumber}
+												</span>
 											</h3>
 											<p>
-												{item.address}. {item.locality}
+												{item.address.address}.{' '}
+												{item.address.locality}
 											</p>
 											<p>
-												{item.city}, {item.state} -{' '}
-												{item.pincode}
+												{item.address.city},{' '}
+												{item.address.state} -{' '}
+												{item.address.pincode}
 											</p>
 											<div className="d-flex">
 												<a
@@ -52,7 +55,9 @@ function Address() {
 														cursor: 'pointer',
 													}}
 													onClick={() =>
-														editaddressHandler(item)
+														editaddressHandler(
+															item.key
+														)
 													}
 													className="gradientText"
 												>
@@ -65,7 +70,7 @@ function Address() {
 													className="delete"
 													onClick={() =>
 														deleteAddressHanlder(
-															item
+															item.key
 														)
 													}
 												>

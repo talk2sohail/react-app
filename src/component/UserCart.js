@@ -3,16 +3,18 @@ import EmptyCart from './Checkout/EmptyCart';
 import MyCartUtil from './Checkout/MyCartUtil';
 import { Link } from 'react-router-dom';
 function UserCart() {
+	let Cart = localStorage.getItem('myCart');
+	Cart = JSON.parse(Cart);
+	const [myCart, setmyCart] = useState(Cart || []);
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-	let Cart = localStorage.getItem('myCart');
-	Cart = JSON.parse(Cart);
-	const [myCart, setmyCart] = useState(Cart);
+
 	const cartHandler = item => {
 		const filteredcart = myCart.filter(doc => doc !== item);
-		localStorage.removeItem('myCart');
-		localStorage.setItem('myCart', JSON.stringify(filteredcart));
+		if (filteredcart.length)
+			localStorage.setItem('myCart', JSON.stringify(filteredcart));
+		else localStorage.removeItem('myCart');
 		setmyCart(filteredcart);
 	};
 	return (
@@ -23,7 +25,7 @@ function UserCart() {
 						<div className="userWrapper">
 							<div className="userHeader">
 								<h2>My Cart</h2>
-								{myCart && (
+								{myCart.length ? (
 									<Link
 										to="/checkout"
 										style={{ cursor: 'pointer' }}
@@ -31,6 +33,8 @@ function UserCart() {
 									>
 										CHECKOUT NOW
 									</Link>
+								) : (
+									<></>
 								)}
 							</div>
 
@@ -38,7 +42,7 @@ function UserCart() {
 
 							<div className="userDetails">
 								<div className="orderBlock">
-									{myCart ? (
+									{myCart.length ? (
 										<MyCartUtil
 											myCart={myCart}
 											cartHandler={cartHandler}

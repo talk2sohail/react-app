@@ -31,7 +31,7 @@ function PriceSummary({ pickUp, onsubmitHandler }) {
 							{item.issue.map((doc, index) => (
 								<ul
 									style={{
-										paddingLeft: 0,
+										paddingLeft: '0px',
 										display: 'flex',
 										justifyContent: 'space-between',
 									}}
@@ -41,7 +41,7 @@ function PriceSummary({ pickUp, onsubmitHandler }) {
 										{doc.issue}
 									</li>
 									<span
-										style={{ paddingLeft: 85 }}
+										style={{ paddingLeft: '85px' }}
 										className="float-right"
 									>
 										Rs {doc.price[0]} - Rs {doc.price[1]}

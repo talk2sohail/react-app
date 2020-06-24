@@ -52,7 +52,7 @@ function App() {
 								component={AddAddress}
 							/>
 							<Route
-								path="/editaddress"
+								path="/editaddress/:id"
 								exact
 								component={EditAddress}
 							/>

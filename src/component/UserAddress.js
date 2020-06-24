@@ -4,24 +4,28 @@ function UserAddress({ AddressHandler, Address }) {
 	const { address } = useContext(AddressContext);
 	return (
 		address &&
-		address.map((item, index) => (
+		address.map(item => (
 			<div
 				className={
-					Address[index] ? 'savedAddress selected' : 'savedAddress'
+					Address[`${item.key}`]
+						? 'savedAddress selected'
+						: 'savedAddress'
 				}
-				key={index}
+				key={item.key}
 				onClick={() => {
-					AddressHandler(item, index);
+					AddressHandler(item.address, item.key);
 				}}
 			>
 				<h3>
-					{item.fName} {item.lName} <span>{item.phoneNumber}</span>
+					{item.address.fName} {item.address.lName}{' '}
+					<span>{item.address.phoneNumber}</span>
 				</h3>
 				<p>
-					{item.address}. {item.locality}
+					{item.address.address}. {item.address.locality}
 				</p>
 				<p>
-					{item.city}, {item.state} - {item.pincode}
+					{item.address.city}, {item.address.state} -{' '}
+					{item.address.pincode}
 				</p>
 			</div>
 		))

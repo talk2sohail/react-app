@@ -1,32 +1,40 @@
-import React, { createContext, useState, useEffect } from 'react';
-
+import React, { createContext, useState } from 'react';
+import uuid from 'react-uuid';
 export const AddressContext = createContext();
 const AddressContextProvider = props => {
 	let userAddress = localStorage.getItem('address');
 	userAddress = JSON.parse(userAddress);
 	const [address, setAddress] = useState(userAddress);
-	const [editAddress, seteditAddress] = useState(null);
+	const [editAddress, seteditAddress] = useState([]);
 	const saveAddress = address => {
 		//  save to dataBase
+		if (editAddress.length) {
+			deleteAddressHanlder(editAddress[0]);
+		}
 		let storage = localStorage.getItem('address');
+
+		const Address = {
+			key: uuid(),
+			address: address,
+		};
 		if (!storage) {
-			storage = [address];
+			storage = [Address];
 			localStorage.setItem('address', JSON.stringify(storage));
 		} else {
 			storage = JSON.parse(storage);
-			storage.push(address);
-			localStorage.removeItem('address');
+			storage.push(Address);
 			localStorage.setItem('address', JSON.stringify(storage));
 		}
-		seteditAddress(address);
+		setAddress(storage);
 	};
-	const editAddressHandler = item => {
+	const findAddress = item => {
 		seteditAddress(item);
-		console.log(item);
+	};
+	const resetEditAddressHandler = () => {
+		seteditAddress([]);
 	};
 	const deleteAddressHanlder = item => {
-		const filteredaddress = address.filter(doc => doc !== item);
-		localStorage.removeItem('address');
+		const filteredaddress = address.filter(doc => doc.key !== item);
 		localStorage.setItem('address', JSON.stringify(filteredaddress));
 		setAddress(filteredaddress);
 	};
@@ -36,7 +44,8 @@ const AddressContextProvider = props => {
 				address,
 				saveAddress,
 				deleteAddressHanlder,
-				editAddressHandler,
+				findAddress,
+				resetEditAddressHandler,
 				editAddress,
 			}}
 		>
