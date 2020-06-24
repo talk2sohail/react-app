@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import User from '../User';
-import AddEditAddressForm from '../../Address/AddEditAddressForm';
-import { Link, Redirect } from 'react-router-dom';
+import AddEditAddressForm from '../../AddressUtil/AddEditAddressForm';
+import { Link } from 'react-router-dom';
 import { AddressContext } from '../../../Contexts/AddressContext/AddressContext';
 // import Error404 from '../../Error404';
 function EditAddress({
@@ -21,9 +21,9 @@ function EditAddress({
 		findAddress(Address);
 		return () => resetEditAddressHandler();
 	}, []);
-	console.log(Address);
+	// console.log(Address);
 	if (!Address.length) {
-		console.log('error');
+		// console.log('error');
 		return <div>hi</div>;
 	}
 	return (
@@ -39,8 +39,8 @@ function EditAddress({
 									className="d-block d-lg-none"
 								>
 									<img
-										src="assets/images/icons/lessthan.png"
-										width="22"
+										src="/assets/images/icons/lessthan.png"
+										style={{ width: '22px' }}
 										className="mr-2"
 									/>
 								</Link>

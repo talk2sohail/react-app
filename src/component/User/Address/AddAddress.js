@@ -1,6 +1,6 @@
 import React from 'react';
 import User from '../User';
-import AddEditAddressForm from '../../Address/AddEditAddressForm';
+import AddEditAddressForm from '../../AddressUtil/AddEditAddressForm';
 import { Link } from 'react-router-dom';
 function AddAddress() {
 	const init = {
@@ -27,9 +27,10 @@ function AddAddress() {
 									className="d-block d-lg-none"
 								>
 									<img
-										src="assets/images/icons/lessthan.png"
-										width="22"
+										src="/assets/images/icons/lessthan.png"
+										style={{ width: '22px' }}
 										className="mr-2"
+										alt=""
 									/>
 								</Link>
 								<h2>Add Address</h2>

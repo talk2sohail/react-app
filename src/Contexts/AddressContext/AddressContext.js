@@ -4,15 +4,15 @@ export const AddressContext = createContext();
 const AddressContextProvider = props => {
 	let userAddress = localStorage.getItem('address');
 	userAddress = JSON.parse(userAddress);
-	const [address, setAddress] = useState(userAddress);
+	const [address, setAddress] = useState(userAddress || []);
 	const [editAddress, seteditAddress] = useState([]);
 	const saveAddress = address => {
 		//  save to dataBase
 		if (editAddress.length) {
-			deleteAddressHanlder(editAddress[0]);
+			deleteAddressHanlder(editAddress[0].key);
 		}
-		let storage = localStorage.getItem('address');
 
+		let storage = localStorage.getItem('address');
 		const Address = {
 			key: uuid(),
 			address: address,
@@ -35,7 +35,11 @@ const AddressContextProvider = props => {
 	};
 	const deleteAddressHanlder = item => {
 		const filteredaddress = address.filter(doc => doc.key !== item);
-		localStorage.setItem('address', JSON.stringify(filteredaddress));
+		if (filteredaddress.length) {
+			localStorage.setItem('address', JSON.stringify(filteredaddress));
+		} else {
+			localStorage.removeItem('address');
+		}
 		setAddress(filteredaddress);
 	};
 	return (

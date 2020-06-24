@@ -3,9 +3,9 @@ import React from 'react';
 import PickDropWrap from './PickDropWrap';
 import ShopAddress from './ShopAddress';
 import AddAddress from './AddAddress';
-import { FormShowHook } from '../Address/AddEditHook';
+import { FormShowHook } from '../AddressUtil/AddEditHook';
 import UserAddress from '../UserAddress';
-import AddEditAddressForm from '../Address/AddEditAddressForm';
+import AddEditAddressForm from '../AddressUtil/AddEditAddressForm';
 function PickupAddress({
 	pickUpaddressHandler,
 	pickUpAddress,

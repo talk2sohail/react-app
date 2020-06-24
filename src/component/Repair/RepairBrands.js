@@ -64,7 +64,7 @@ function RepairBrands() {
 	const CheckOutHandler = () => {
 		let myCart = localStorage.getItem('myCart');
 		let issue = [];
-		for (let [key, value] of Object.entries(issuesName)) {
+		for (let [_, value] of Object.entries(issuesName)) {
 			if (value) issue.push(value);
 		}
 		let summary = {
@@ -73,7 +73,7 @@ function RepairBrands() {
 			issue: issue,
 			price: price,
 		};
-		if (!myCart || myCart.length == 0) {
+		if (!myCart || myCart.length === 0) {
 			localStorage.setItem('myCart', JSON.stringify([summary]));
 		} else {
 			localStorage.removeItem('myCart');
