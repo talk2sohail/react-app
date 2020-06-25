@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Error } from "../../Contexts/ErrorContext/ErrorContext";
 
+
 export function AddressHook(initialState) {
   const [state, setState] = useState(initialState);
-  const checkOuthandler = (e) => {
+  const onChangehandler = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({
       ...prevState,
@@ -11,33 +12,21 @@ export function AddressHook(initialState) {
     }));
   };
   const stateClear = (initialState) => {
+    // reset to innital state
     setState(initialState);
   };
-  const checkOutSubmithandler = (e, initialState) => {
-    e.preventDefault();
-    // some logic check and save to database
+  const onSubmitHandler = () => {
+    // some logic check
     for (let [key, value] of Object.entries(state)) {
       if (!value) {
         Error("warn", `please fill all the section`);
-        return true;
+        return false;
       }
     }
-    //  reset the state
-    let storage = localStorage.getItem("address");
-    if (!storage) {
-      storage = [state];
-      localStorage.setItem("address", JSON.stringify(storage));
-    } else {
-      storage = JSON.parse(storage);
-      storage.push(state);
-      localStorage.removeItem("address");
-      localStorage.setItem("address", JSON.stringify(storage));
-    }
-    stateClear(initialState);
-    return false;
+    return true;
   };
 
-  return [state, checkOuthandler, checkOutSubmithandler, stateClear];
+  return [state, onChangehandler, onSubmitHandler, stateClear];
 }
 
 export function FormShowHook(initialState) {
