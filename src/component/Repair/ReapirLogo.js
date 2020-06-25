@@ -11,7 +11,7 @@ function ReapirLogo() {
 						<div className="customerLogo" key={item.key}>
 							<img
 								alt=""
-								src={`assets/images/brandLogos/repair/${item.img}`}
+								src={`/assets/images/brandLogos/repair/${item.img}`}
 							/>
 						</div>
 					))}

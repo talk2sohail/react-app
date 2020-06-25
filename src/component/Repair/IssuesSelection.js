@@ -1,19 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { issueData } from '../../data/RepairData';
-function IssuesSelection({ issueHandler, state }) {
-	const [issues, setIssues] = useState(issueData);
+import React, { useEffect, useContext } from 'react';
+import { PhoneContext } from '../../Contexts/PhoneContext/PhoneContext';
+function IssuesSelection() {
+	const {
+		issues,
+		selectedIssues,
+		unSelectIssuesHanlder,
+		selectIssuesHanlder,
+		preSelectedIssue,
+		clearAllIssues,
+	} = useContext(PhoneContext);
+
 	useEffect(() => {
+		preSelectedIssue();
 		window.scrollTo(0, 500);
+		return () => {
+			clearAllIssues();
+		};
 	}, []);
 
 	return (
 		<div className="row no-gutters justify-content-start align-items-center issueSelection selectOption">
-			{issues.map((item, index) => (
-				<div className="col-12 col-md-6 col-lg-4" key={index}>
+			{issues.map(item => (
+				<div className="col-12 col-md-6 col-lg-4" key={item.key}>
 					<div className="branWrap ">
 						<div className="iconWrap">
 							<img
-								src="assets/images/icons/broken-phone.png"
+								src="/assets/images/icons/broken-phone.png"
 								alt=""
 							/>
 						</div>
@@ -26,19 +38,28 @@ function IssuesSelection({ issueHandler, state }) {
 						</div>
 						<a
 							href="javascript:void(0)"
-							className={state[index] ? 'remove' : ''}
+							className={selectedIssues[item.key] ? 'remove' : ''}
 							onClick={() => {
-								issueHandler(
-									index,
-									item.issue,
-									item.minPrice,
-									item.maxPrice
-								);
+								if (selectedIssues[item.key])
+									unSelectIssuesHanlder(
+										item.key,
+										item.minPrice,
+										item.maxPrice
+									);
+								else {
+									selectIssuesHanlder(
+										item.key,
+										item.minPrice,
+										item.maxPrice
+									);
+								}
 							}}
 						>
 							<span className="">+ Add</span>
 							<span
-								className={state[index] !== {} ? '' : 'd-none'}
+								className={
+									selectedIssues[item.key] ? '' : 'd-none'
+								}
 							>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

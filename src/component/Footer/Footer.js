@@ -9,7 +9,7 @@ function Footer() {
 					<div className="footerComponent about">
 						<Link to="/" className="logo">
 							<img
-								src="assets/images/logo.png"
+								src="/assets/images/logo.png"
 								width="100"
 								alt=""
 							/>
@@ -87,7 +87,7 @@ function Footer() {
 										key={item.key}
 									>
 										<img
-											src={`assets/images/icons/${item.img}`}
+											src={`/assets/images/icons/${item.img}`}
 											width="16"
 										/>
 									</a>

@@ -1,33 +1,45 @@
-import React, { createContext, useState, useEffect } from 'react';
-
+import React, { createContext, useState } from 'react';
+import uuid from 'react-uuid';
 export const AddressContext = createContext();
 const AddressContextProvider = props => {
 	let userAddress = localStorage.getItem('address');
 	userAddress = JSON.parse(userAddress);
-	const [address, setAddress] = useState(userAddress);
-	const [editAddress, seteditAddress] = useState(null);
+	const [address, setAddress] = useState(userAddress || []);
+	const [editAddress, seteditAddress] = useState([]);
 	const saveAddress = address => {
 		//  save to dataBase
+		if (editAddress.length) {
+			deleteAddressHanlder(editAddress[0].key);
+		}
+
 		let storage = localStorage.getItem('address');
+		const Address = {
+			key: uuid(),
+			address: address,
+		};
 		if (!storage) {
-			storage = [address];
+			storage = [Address];
 			localStorage.setItem('address', JSON.stringify(storage));
 		} else {
 			storage = JSON.parse(storage);
-			storage.push(address);
-			localStorage.removeItem('address');
+			storage.push(Address);
 			localStorage.setItem('address', JSON.stringify(storage));
 		}
-		seteditAddress(address);
+		setAddress(storage);
 	};
 	const editAddressHandler = item => {
 		seteditAddress(item);
-		console.log(item);
+	};
+	const resetEditAddressHandler = () => {
+		seteditAddress([]);
 	};
 	const deleteAddressHanlder = item => {
-		const filteredaddress = address.filter(doc => doc !== item);
-		localStorage.removeItem('address');
-		localStorage.setItem('address', JSON.stringify(filteredaddress));
+		const filteredaddress = address.filter(doc => doc.key !== item);
+		if (filteredaddress.length) {
+			localStorage.setItem('address', JSON.stringify(filteredaddress));
+		} else {
+			localStorage.removeItem('address');
+		}
 		setAddress(filteredaddress);
 	};
 	return (
@@ -37,6 +49,7 @@ const AddressContextProvider = props => {
 				saveAddress,
 				deleteAddressHanlder,
 				editAddressHandler,
+				resetEditAddressHandler,
 				editAddress,
 			}}
 		>

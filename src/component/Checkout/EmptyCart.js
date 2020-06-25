@@ -4,7 +4,7 @@ function EmptyCart() {
 	return (
 		<div className="emptyBlock">
 			<img
-				src="assets/images/icons/emty_cart.svg"
+				src="/assets/images/icons/emty_cart.svg"
 				className="img-fluid"
 				alt="empty"
 			/>

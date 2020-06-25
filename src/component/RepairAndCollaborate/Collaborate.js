@@ -6,7 +6,10 @@ function Collaborate() {
 			<div className="sectionWrapper">
 				<div className="row align-items-center justify-content-between">
 					<div className="col-12 col-lg-6 text-center d-none d-lg-block">
-						<img src="assets/images/icons/collaborate.svg" alt="" />
+						<img
+							src="/assets/images/icons/collaborate.svg"
+							alt=""
+						/>
 					</div>
 					<div className="col-12 col-lg-6">
 						<p className="pill text-capitalize">repair</p>

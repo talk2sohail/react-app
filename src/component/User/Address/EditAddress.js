@@ -1,14 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import User from '../User';
-import AddEditAddressForm from '../../Address/AddEditAddressForm';
-import { Link } from 'react-router-dom';
+import AddEditAddressForm from '../../AddressUtil/AddEditAddressForm';
+import { Link, Redirect } from 'react-router-dom';
 import { AddressContext } from '../../../Contexts/AddressContext/AddressContext';
-import Error404 from '../../Error404';
-
-function EditAddress() {
-	const { editAddress } = useContext(AddressContext);
-	if (!editAddress) {
-		return <Error404 />;
+function EditAddress({
+	match: {
+		params: { id },
+	},
+}) {
+	const { address, resetEditAddressHandler, editAddressHandler } = useContext(
+		AddressContext
+	);
+	const Address = address.filter(item => {
+		if (item.key === id) {
+			return item;
+		}
+	});
+	useEffect(() => {
+		editAddressHandler(Address);
+		return () => resetEditAddressHandler();
+	}, []);
+	if (!Address.length) {
+		return <Redirect to="/page404" />;
 	}
 	return (
 		<section className="profileWrapper">
@@ -23,8 +36,8 @@ function EditAddress() {
 									className="d-block d-lg-none"
 								>
 									<img
-										src="assets/images/icons/lessthan.png"
-										width="22"
+										src="/assets/images/icons/lessthan.png"
+										style={{ width: '22px' }}
 										className="mr-2"
 									/>
 								</Link>
@@ -33,7 +46,7 @@ function EditAddress() {
 							</div>
 							<div className="userDetails addressChange">
 								<AddEditAddressForm
-									init={editAddress}
+									init={Address[0].address}
 									offForm="address"
 									process="Edit Address"
 								/>

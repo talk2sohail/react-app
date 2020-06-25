@@ -23,7 +23,7 @@ function RepairBanner() {
 								/>
 								<button type="submit">
 									<img
-										src="assets/images/icons/search.png"
+										src="/assets/images/icons/search.png"
 										width="20"
 										alt=""
 									/>

@@ -31,7 +31,7 @@ function PriceSummary({ pickUp, onsubmitHandler }) {
 							{item.issue.map((doc, index) => (
 								<ul
 									style={{
-										paddingLeft: 0,
+										paddingLeft: '0px',
 										display: 'flex',
 										justifyContent: 'space-between',
 									}}
@@ -41,7 +41,7 @@ function PriceSummary({ pickUp, onsubmitHandler }) {
 										{doc.issue}
 									</li>
 									<span
-										style={{ paddingLeft: 85 }}
+										style={{ paddingLeft: '85px' }}
 										className="float-right"
 									>
 										Rs {doc.price[0]} - Rs {doc.price[1]}
@@ -98,51 +98,3 @@ function PriceSummary({ pickUp, onsubmitHandler }) {
 }
 
 export default PriceSummary;
-
-{
-	/* <div className="priceBody">
-											{this.state.cart_details.map((cart, i) => {
-												return (
-													<span
-														className="price priceHeader"
-														style={{ fontSize: 14 }}
-														key={i}
-													>
-														<span
-															style={{
-																fontWeight: "bold",
-																display: "block",
-																paddingBottom: 11,
-															}}
-														>
-															{cart.brand} {cart.mobile}
-														</span>
-														{cart.issue.map((iss, j) => {
-															return (
-																<ul
-																	style={{
-																		paddingLeft: 0,
-																		display: "flex",
-																		justifyContent: "space-between",
-																	}}
-																	key={j}
-																>
-																	<li style={{ listStyle: "none" }}>
-																		{iss.issue_name}
-																	</li>
-																	<span
-																		style={{ paddingLeft: 85 }}
-																		className="float-right"
-																	>
-																		Rs {iss.low} - Rs {iss.high}
-																	</span>
-																</ul>
-															);
-														})}
-													</span>
-												);
-											})}
-											<p className="tax">
-												Tax <span className="float-right">Rs 25</span>
-		 */
-}

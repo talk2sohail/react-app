@@ -18,7 +18,7 @@ function FaqBanner() {
 								ea veritatis neque fuga
 							</p>
 							<img
-								src="assets/images/icons/faqa.svg"
+								src="/assets/images/icons/faqa.svg"
 								className="mt-1"
 								width="350"
 								alt=""

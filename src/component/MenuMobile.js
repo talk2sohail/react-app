@@ -21,7 +21,7 @@ function MenuMobile({ handleMobile }) {
 						</svg>
 					</a>
 					<img
-						src="assets/images/icons/collaborate.svg"
+						src="/assets/images/icons/collaborate.svg"
 						width="100"
 						alt=""
 					/>
@@ -67,7 +67,7 @@ function MenuMobile({ handleMobile }) {
 						<Link to="/profile" className="mobileMenuLink">
 							Profile
 						</Link>
-						<a href="/appointments" className="mobileMenuLink">
+						<a href="/appointments/all" className="mobileMenuLink">
 							Repair Appointments
 						</a>
 						<Link to="/address" className="mobileMenuLink">

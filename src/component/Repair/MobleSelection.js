@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { mobileData } from '../../data/RepairData';
-function MobleSelection({ onClickMobileHandler }) {
-	const [mobiles, setMobiles] = useState(mobileData);
+import React, { useContext, useEffect } from 'react';
+import { PhoneContext } from '../../Contexts/PhoneContext/PhoneContext';
+function MobleSelection() {
+	const { mobiles, selectMobileHanlder } = useContext(PhoneContext);
 	useEffect(() => {
 		window.scrollTo(0, 500);
-	});
+	}, []);
 	return (
 		<div className="row no-gutters justify-content-start align-items-center selectOption mobileSelect">
 			{mobiles.map(item => (
@@ -12,13 +12,13 @@ function MobleSelection({ onClickMobileHandler }) {
 					className="col-6 col-md-4 col-lg-2"
 					key={item.key}
 					onClick={() => {
-						onClickMobileHandler(item.mobileName);
+						selectMobileHanlder(item.mobileName);
 					}}
 				>
 					<div className="branWrap">
 						<div className="imgWrapBrand">
 							<img
-								src={`assets/images/mobiles/oneplus/${item.img}`}
+								src={`/assets/images/mobiles/oneplus/${item.img}`}
 								className="d-block text-center mx-auto"
 								alt=""
 							/>

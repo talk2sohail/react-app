@@ -22,7 +22,7 @@ function Brands() {
 								{brands.map(item => (
 									<li key={item.key}>
 										<img
-											src={`assets/images/brandLogos/${item.img}`}
+											src={`/assets/images/brandLogos/${item.img}`}
 											alt={item.brandName}
 										/>
 									</li>

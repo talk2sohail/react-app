@@ -4,6 +4,7 @@ import Collborate from '../RepairAndCollaborate/Collaborate';
 import RepairLogos from './ReapirLogo';
 import RepairBrand from './RepairBrands';
 import Services from '../Service/Services';
+
 function Repair() {
 	useEffect(() => {
 		window.scrollTo(0, 0);

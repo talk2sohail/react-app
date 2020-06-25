@@ -59,14 +59,17 @@ function Services() {
 					<div className="prevAchieve slick-prev d-flex slick-slide">
 						<span>
 							<img
-								src="assets/images/icons/backward.png"
+								src="/assets/images/icons/backward.png"
 								alt=""
 							/>
 						</span>
 					</div>
 					<div className="nextAchieve slick-next d-flex text-right slick-slide">
 						<span>
-							<img src="assets/images/icons/forward.png" alt="" />
+							<img
+								src="/assets/images/icons/forward.png"
+								alt=""
+							/>
 						</span>
 					</div>
 				</div>

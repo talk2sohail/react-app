@@ -39,7 +39,7 @@ function EditProfile() {
 									className="d-block d-lg-none"
 								>
 									<img
-										src="assets/images/icons/lessthan.png"
+										src="/assets/images/icons/lessthan.png"
 										width="22"
 										className="mr-2"
 									/>

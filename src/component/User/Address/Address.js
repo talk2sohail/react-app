@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import User from '../User';
 import AddAddress from '../../Checkout/AddAddress';
 import { Link } from 'react-router-dom';
@@ -6,13 +6,9 @@ import { useHistory } from 'react-router-dom';
 import { AddressContext } from '../../../Contexts/AddressContext/AddressContext';
 function Address() {
 	let history = useHistory();
-	const { address, deleteAddressHanlder, editAddressHandler } = useContext(
-		AddressContext
-	);
-
+	const { address, deleteAddressHanlder } = useContext(AddressContext);
 	const editaddressHandler = item => {
-		editAddressHandler(item);
-		history.push('/editaddress');
+		history.push(`/editaddress/${item}`);
 	};
 	return (
 		<section className="profileWrapper">
@@ -29,51 +25,55 @@ function Address() {
 								<Link to="/addaddress">
 									<AddAddress />
 								</Link>
-								{address &&
-									address.map((item, index) => (
-										<div
-											className="savedAddress"
-											key={index}
-										>
-											<h3>
-												{item.fName} {item.lName}{' '}
-												<span>{item.phoneNumber}</span>
-											</h3>
-											<p>
-												{item.address}. {item.locality}
-											</p>
-											<p>
-												{item.city}, {item.state} -{' '}
-												{item.pincode}
-											</p>
-											<div className="d-flex">
-												<a
-													style={{
-														cursor: 'pointer',
-													}}
-													onClick={() =>
-														editaddressHandler(item)
-													}
-													className="gradientText"
-												>
-													Edit
-												</a>
-												<a
-													style={{
-														cursor: 'pointer',
-													}}
-													className="delete"
-													onClick={() =>
-														deleteAddressHanlder(
-															item
-														)
-													}
-												>
-													Delete
-												</a>
-											</div>
+								{address.map(item => (
+									<div
+										className="savedAddress"
+										key={item.key}
+									>
+										<h3>
+											{item.address.fName}{' '}
+											{item.address.lName}{' '}
+											<span>
+												{item.address.phoneNumber}
+											</span>
+										</h3>
+										<p>
+											{item.address.address}.{' '}
+											{item.address.locality}
+										</p>
+										<p>
+											{item.address.city},{' '}
+											{item.address.state} -{' '}
+											{item.address.pincode}
+										</p>
+										<div className="d-flex">
+											<a
+												style={{
+													cursor: 'pointer',
+												}}
+												onClick={() =>
+													editaddressHandler(item.key)
+												}
+												className="gradientText"
+											>
+												Edit
+											</a>
+											<a
+												style={{
+													cursor: 'pointer',
+												}}
+												className="delete"
+												onClick={() =>
+													deleteAddressHanlder(
+														item.key
+													)
+												}
+											>
+												Delete
+											</a>
 										</div>
-									))}
+									</div>
+								))}
 							</div>
 						</div>
 					</div>

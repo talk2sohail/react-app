@@ -8,7 +8,7 @@ function Service({ item }) {
 			<Link to="#" className="text-center">
 				<img
 					key={item.key}
-					src={`assets/images/background/${img}`}
+					src={`/assets/images/background/${img}`}
 					alt=""
 				/>
 				<div className="content">

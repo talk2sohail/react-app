@@ -161,7 +161,7 @@ function Modal() {
 										className="gLogin"
 									>
 										<img
-											src="assets/images/icons/google.png"
+											src="/assets/images/icons/google.png"
 											alt=""
 										/>
 										sign in using gmail
@@ -201,7 +201,7 @@ function Modal() {
 										className="gLogin"
 									>
 										<img
-											src="assets/images/icons/google.png"
+											src="/assets/images/icons/google.png"
 											alt=""
 										/>
 										sign in using gmail
