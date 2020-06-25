@@ -49,7 +49,7 @@ function NavBar() {
 							<div className="logoWrapper">
 								<Link to="/">
 									<img
-										src="assets/images/logo.png"
+										src="/assets/images/logo.png"
 										width="120"
 										alt=""
 									/>
@@ -99,7 +99,9 @@ function NavBar() {
 
 										<li className="rule"></li>
 										<li>
-											<Link to="/appointments">
+											<Link
+												to={`/appointments/all`}
+											>
 												Repair Appointments
 											</Link>
 										</li>
@@ -128,7 +130,7 @@ function NavBar() {
 											<a className="d-flex justify-content-center product">
 												<div className="imgWrap">
 													<img
-														src="assets/images/mobiles/oneplus/oneplussixt.png"
+														src="/assets/images/mobiles/oneplus/oneplussixt.png"
 														height="60"
 														alt=""
 													/>

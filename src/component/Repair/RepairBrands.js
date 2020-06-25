@@ -1,86 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import SearchBrands from './SearchBrand';
 import BrandsSelection from './BrandsSelection';
 import MobleSelection from './MobleSelection';
 import IssueSelection from './IssuesSelection';
 import Checkout from './RepairCheckout';
+import { PhoneContext } from '../../Contexts/PhoneContext/PhoneContext';
 
 function RepairBrands() {
-	const [selectBrand, setSelectBrand] = useState(true);
-	const [brandName, setBrandName] = useState('');
-	const [selectMobile, setSelectMobile] = useState(false);
-	const [selectIssue, setSelectIssue] = useState(false);
-	const [activeBrands, setActiveBrands] = useState(false);
-	const [activeMobiles, setActiveMobiles] = useState(false);
-	const [mobileName, setmobileName] = useState('');
-	const [price, setPrice] = useState([0, 0]);
-	const [issuesName, setIssuesName] = useState({});
+	const {
+		totalPrice,
+		issues,
+		selectedIssues,
+		selectedBrand,
+		unSelectBrandHanlder,
+		selectedMobile,
+		unSelectMobileHanlder,
+		unClearAll,
+	} = useContext(PhoneContext);
 
-	const onClickBrandHandler = item => {
-		if (activeBrands) {
-			setSelectBrand(true);
-			setSelectMobile(false);
-			setSelectIssue(false);
-			setActiveBrands(false);
-			setActiveMobiles(false);
-			setBrandName('');
-			setPrice([0, 0]);
-		} else {
-			setBrandName(item);
-			setActiveBrands(true);
-			setSelectBrand(false);
-			setSelectMobile(true);
-		}
-	};
-	const onClickMobileHandler = item => {
-		if (activeMobiles) {
-			setPrice([0, 0]);
-			setSelectBrand(false);
-			setSelectMobile(true);
-			setActiveMobiles(false);
-			setSelectIssue(false);
-			setmobileName('');
-		} else {
-			setmobileName(item);
-			setSelectMobile(false);
-			setActiveMobiles(true);
-			setSelectIssue(true);
-		}
-	};
-	const issueHandler = (index, issue, minPrice, maxPrice) => {
-		let obj = { ...issuesName };
-		if (obj[index]) {
-			setPrice([price[0] - minPrice, price[1] - maxPrice]);
-			obj[index] = '';
-		} else {
-			setPrice([price[0] + minPrice, price[1] + maxPrice]);
-			obj[index] = {
-				issue: issue,
-				price: [minPrice, maxPrice],
-			};
-		}
-		setIssuesName(obj);
-	};
 	const CheckOutHandler = () => {
 		let myCart = localStorage.getItem('myCart');
 		let issue = [];
-		for (let [_, value] of Object.entries(issuesName)) {
-			if (value) issue.push(value);
-		}
+		issues.forEach(item => {
+			if (selectedIssues[item.key]) {
+				issue.push({
+					key: item.key,
+					issue: item.issue,
+					price: [item.minPrice, item.maxPrice],
+				});
+			}
+		});
+
 		let summary = {
-			brand: brandName,
-			model: mobileName,
+			brand: selectedBrand.brand,
+			model: selectedMobile.mobile,
 			issue: issue,
-			price: price,
+			price: totalPrice,
 		};
 		if (!myCart || myCart.length === 0) {
 			localStorage.setItem('myCart', JSON.stringify([summary]));
 		} else {
-			localStorage.removeItem('myCart');
 			myCart = JSON.parse(myCart);
 			myCart.push(summary);
 			localStorage.setItem('myCart', JSON.stringify(myCart));
 		}
+		unClearAll();
 	};
 	return (
 		<section className="repairSelection">
@@ -89,35 +53,39 @@ function RepairBrands() {
 					<div
 						className="col-4"
 						onClick={() => {
-							if (activeBrands) onClickBrandHandler();
+							if (selectedBrand.active) unSelectBrandHanlder();
 						}}
 					>
 						<a
 							href="javascript:void(0)"
 							className={
-								activeBrands
+								selectedBrand.active
 									? 'text-center progressBooking active'
 									: 'text-center progressBooking'
 							}
 						>
-							{brandName ? brandName : 'Brand'}
+							{selectedBrand.brand
+								? selectedBrand.brand
+								: 'Brand'}
 						</a>
 					</div>
 					<div
 						className="col-4"
 						onClick={() => {
-							if (activeMobiles) onClickMobileHandler();
+							if (selectedMobile.active) unSelectMobileHanlder();
 						}}
 					>
 						<a
 							href="javascript:void(0)"
 							className={
-								activeMobiles
+								selectedMobile.active
 									? 'text-center progressBooking active'
 									: 'text-center progressBooking'
 							}
 						>
-							{mobileName ? mobileName : 'Mobile'}
+							{selectedMobile.mobile
+								? selectedMobile.mobile
+								: 'Mobile'}
 						</a>
 					</div>
 					<div className="col-4">
@@ -130,34 +98,27 @@ function RepairBrands() {
 					</div>
 				</div>
 
-				{selectBrand && (
+				{!selectedBrand.active && (
 					<>
 						<SearchBrands msg="Select Your Brand" />
-						<BrandsSelection
-							onClickBrandHandler={onClickBrandHandler}
-						/>
+						<BrandsSelection />
 					</>
 				)}
-				{selectMobile && (
+				{selectedBrand.active && !selectedMobile.active && (
 					<>
-						<SearchBrands msg={`Select Your ${brandName} Device`} />
-						<MobleSelection
-							onClickMobileHandler={onClickMobileHandler}
+						<SearchBrands
+							msg={`Select Your ${selectedBrand.brand} Device`}
 						/>
+						<MobleSelection />
 					</>
 				)}
-				{selectIssue && (
+				{selectedBrand.active && selectedMobile.active && (
 					<>
 						<Checkout
-							msg={`Select Your issue in ${mobileName}`}
-							min={price[0]}
-							max={price[1]}
+							msg={`Select Your issue in ${selectedMobile.mobile}`}
 							CheckOutHandler={CheckOutHandler}
 						/>
-						<IssueSelection
-							issueHandler={issueHandler}
-							state={issuesName}
-						/>
+						<IssueSelection />
 					</>
 				)}
 			</div>

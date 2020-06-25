@@ -24,7 +24,7 @@ function About() {
 					</div>
 					<div className="col-12 col-lg-6">
 						<img
-							src="assets/images/background/mobirepair.jpg"
+							src="/assets/images/background/mobirepair.jpg"
 							alt=""
 						/>
 					</div>
@@ -80,8 +80,8 @@ function About() {
 						<div className="col-12 col-lg-6">
 							<img
 								className="d-block mx-auto img-fluid"
-								src="assets/images/icons/team_spirit.svg"
-								height="400"
+								src="/assets/images/icons/team_spirit.svg"
+								style={{ height: '400px' }}
 								alt=""
 							/>
 						</div>

@@ -18,7 +18,7 @@ function Banner() {
 			<div className="bannerSingle">
 				{banner.map(item => (
 					<div className="bannerItem" key={item.key}>
-						<img src={`assets/images/banner/${item.img}`} alt="" />
+						<img src={`/assets/images/banner/${item.img}`} alt="" />
 					</div>
 				))}
 			</div>

@@ -27,7 +27,7 @@ const AddressContextProvider = props => {
 		}
 		setAddress(storage);
 	};
-	const findAddress = item => {
+	const editAddressHandler = item => {
 		seteditAddress(item);
 	};
 	const resetEditAddressHandler = () => {
@@ -48,7 +48,7 @@ const AddressContextProvider = props => {
 				address,
 				saveAddress,
 				deleteAddressHanlder,
-				findAddress,
+				editAddressHandler,
 				resetEditAddressHandler,
 				editAddress,
 			}}

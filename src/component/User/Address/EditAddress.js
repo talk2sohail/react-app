@@ -1,30 +1,27 @@
 import React, { useContext, useEffect } from 'react';
 import User from '../User';
 import AddEditAddressForm from '../../AddressUtil/AddEditAddressForm';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { AddressContext } from '../../../Contexts/AddressContext/AddressContext';
-// import Error404 from '../../Error404';
 function EditAddress({
 	match: {
 		params: { id },
 	},
 }) {
-	const { address, resetEditAddressHandler, findAddress } = useContext(
+	const { address, resetEditAddressHandler, editAddressHandler } = useContext(
 		AddressContext
 	);
-	const Address = address.filter(doc => {
-		if (doc.key === id) {
-			return doc;
+	const Address = address.filter(item => {
+		if (item.key === id) {
+			return item;
 		}
 	});
 	useEffect(() => {
-		findAddress(Address);
+		editAddressHandler(Address);
 		return () => resetEditAddressHandler();
 	}, []);
-	// console.log(Address);
 	if (!Address.length) {
-		// console.log('error');
-		return <div>hi</div>;
+		return <Redirect to="/page404" />;
 	}
 	return (
 		<section className="profileWrapper">

@@ -8,7 +8,7 @@ function Error404() {
 					<div className="col-12">
 						<div className="errorWrapper">
 							<img
-								src="assets/images/icons/not_found.svg"
+								src="/assets/images/icons/not_found.svg"
 								className="img-fluid"
 								alt=""
 							/>

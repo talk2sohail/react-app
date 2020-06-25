@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Error } from '../../Contexts/ErrorContext/ErrorContext';
-function RepairCheckout({ msg, min, max, CheckOutHandler }) {
+import { PhoneContext } from '../../Contexts/PhoneContext/PhoneContext';
+
+function RepairCheckout({ msg, CheckOutHandler }) {
+	const { totalPrice, isPreSelectedIssue } = useContext(PhoneContext);
 	let history = useHistory();
 	const checkoutHandler = () => {
-		if (!max) {
+		if (!totalPrice[1]) {
 			Error('info', 'It seems you forget to select an issue');
 		} else {
 			CheckOutHandler();
@@ -22,7 +25,8 @@ function RepairCheckout({ msg, min, max, CheckOutHandler }) {
 				onClick={checkoutHandler}
 			>
 				<a style={{ cursor: 'pointer' }}>
-					Checkout Rs({min}-{max})
+					{isPreSelectedIssue ? 'Modify' : 'Checkout'} Rs(
+					{totalPrice[0]}-{totalPrice[1]})
 				</a>
 			</div>
 		</div>

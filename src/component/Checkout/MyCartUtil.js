@@ -7,7 +7,7 @@ function MyCartUtil({ myCart, cartHandler, callingFromCart = false }) {
 		>
 			<div className="imgWrap">
 				<img
-					src="assets/images/mobiles/oneplus/oneplussixt.png"
+					src="/assets/images/mobiles/oneplus/oneplussixt.png"
 					alt=""
 				/>
 			</div>
